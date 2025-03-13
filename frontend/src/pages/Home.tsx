@@ -9,7 +9,7 @@ export const Home = () => {
     useEffect(() => {
         const setVh = () => {
             const vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh - 0.22}px`);
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
         };
 
         setVh();
@@ -18,7 +18,7 @@ export const Home = () => {
     },[]);
 
     return (
-        <div className="flex flex-col h-[calc(var(--vh,1vh)*100)] mx-[1.3em] my-[0.8em]">
+        <div className="flex flex-col h-[calc(var(--vh,1vh)*99)] mx-[1.3em] my-[0.8em]">
             <Navbar />
             <Hero />
             <Credits />
