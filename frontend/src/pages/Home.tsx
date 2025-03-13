@@ -18,7 +18,7 @@ export const Home = () => {
     },[]);
 
     return (
-        <div className="flex flex-col h-[calc(var(--vh,1vh)*99)] mx-[1.3em] my-[0.8em]">
+        <div className="flex flex-col h-[calc(var(--vh,1vh)*97)] mx-[1.3em] my-[0.8em]">
             <Navbar />
             <Hero />
             <Credits />
