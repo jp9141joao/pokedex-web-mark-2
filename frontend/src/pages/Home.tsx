@@ -4,7 +4,7 @@ import { Navbar } from "@/components/Navbar"
 
 
 export const Home = () => (
-    <div className="grid gap-48 px-[1.3em] py-[0.8em]">
+    <div className="flex flex-col h-[calc(var(--vh,1vh)*97)] mx-[1.3em] my-[0.8em]">
         <Navbar />
         <Hero />
         <Credits />

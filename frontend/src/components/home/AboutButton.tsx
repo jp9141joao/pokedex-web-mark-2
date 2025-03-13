@@ -2,30 +2,32 @@ import {
     Sheet,
     SheetContent,
     SheetDescription,
+    SheetFooter,
     SheetHeader,
     SheetTitle,
     SheetTrigger,
   } from "@/components/ui/sheet"
 import { Button } from "../ui/button"
+import PokeAPILogo from "@/assets/pokemon-unite.jpg"
 
 export const AboutButton = () => (
     <Sheet>
         <SheetTrigger>
             <Button
                 size={"lg"}
-                className="text-lg rounded-4xl"
+                className="xxs:text-lg rounded-4xl"
             >
                 About API
             </Button>
         </SheetTrigger>
-        <SheetContent side="bottom" className="min-h-[90vh]">
-            <SheetHeader>
-                <SheetTitle className="text-2xl text-center text-white">
+        <SheetContent side="bottom" className="h-[90vh] rounded-t-4xl">
+            <SheetHeader className="pb-0 xxs:pb-4">
+                <SheetTitle className="text-xl xxs:text-4xl text-center text-white mt-6">
                     Discover the Ultimate Pokémon API
                 </SheetTitle>
-                <SheetDescription className="grid gap-4">
+                <SheetDescription>
                     <div>
-                        <p className="text-center text-white">
+                        <p className="text-sm text-center text-white">
                             The PokeAPI is an open-source, RESTful API that provides detailed 
                             data about the Pokémon universe. It offers a wide range of information 
                             such as Pokémon species, abilities, moves, types, and habitats. The API 
@@ -35,14 +37,18 @@ export const AboutButton = () => (
                             related data into apps, games, or websites in an easy-to-use JSON format.
                         </p>
                     </div>
-                    <div>
-
-                    </div>
                 </SheetDescription>
-                <div>
-    
-                </div>
             </SheetHeader>
+           <SheetFooter>
+           <div className="h-[45vh] xxs:h-[60vh] overflow-hidden rounded-t-4xl">
+                <img 
+                    src={PokeAPILogo} 
+                    alt="Noctali" 
+                    className="w-full h-full object-cover object-[50%_45%]"
+                />
+            </div>
+
+           </SheetFooter>
         </SheetContent>
     </Sheet>
 )
