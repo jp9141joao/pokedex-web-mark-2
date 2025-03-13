@@ -20,7 +20,7 @@ export const AboutButton = () => (
                 About API
             </Button>
         </SheetTrigger>
-        <SheetContent side="bottom" className="max-h-[88vh] rounded-t-4xl">
+        <SheetContent side="bottom" className="max-h-[82vh] rounded-t-4xl">
             <SheetHeader className="pb-0 xxs:pb-4">
                 <SheetTitle className="text-xl xxs:text-4xl text-center text-white mt-6">
                     Discover the Ultimate Pokémon API
