@@ -10,7 +10,7 @@ import {
 import { Button } from "../ui/button"
 import PokeAPILogo from "@/assets/pokemon-unite.jpg"
 
-export const AboutButton = () => (
+export const AboutApiButton = () => (
     <Sheet>
         <SheetTrigger>
             <Button
@@ -20,7 +20,7 @@ export const AboutButton = () => (
                 About API
             </Button>
         </SheetTrigger>
-        <SheetContent side="bottom" className="max-h-[82vh] rounded-t-4xl">
+        <SheetContent side="bottom" className="max-h-[86vh] rounded-t-4xl">
             <SheetHeader className="pb-0 xxs:pb-4">
                 <SheetTitle className="text-xl xxs:text-4xl text-center text-white mt-6">
                     Discover the Ultimate Pokémon API
@@ -44,7 +44,7 @@ export const AboutButton = () => (
                     <img 
                         src={PokeAPILogo} 
                         alt="Noctali" 
-                        className="w-full h-full object-cover object-[50%_45%]"
+                        className="w-full h-full object-cover object-[50%_60%]"
                     />
                 </div>
             </SheetFooter>
