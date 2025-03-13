@@ -2,8 +2,6 @@ import { Button } from "../ui/button";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { AboutButton } from "./AboutButton";
 import PikachuImage from "@/assets/picachu.png";
-import { Credits } from "../Credits";
-import { useEffect } from "react";
 
 export const Hero = () => {
 
