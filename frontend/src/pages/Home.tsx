@@ -9,8 +9,7 @@ export const Home = () => {
     useEffect(() => {
         const setVh = () => {
             const vh = window.innerHeight * 0.01;
-            alert(vh)
-            document.documentElement.style.setProperty('--vh', `${vh - 0.2}px`);
+            document.documentElement.style.setProperty('--vh', `${vh - 0.22}px`);
         };
 
         setVh();

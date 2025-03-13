@@ -8,7 +8,7 @@ export const Hero = () => {
     return (
         <div className="grid flex-grow">
             <div className="grid place-items-center gap-1">
-                <div className="grid gap-1 mt-14">
+                <div className="grid gap-1">
                     <div>
                         <img 
                             src={ PikachuImage } 
@@ -25,7 +25,7 @@ export const Hero = () => {
                         <p className="text-xl xxs:text-2xl text-center text-gray-800 px-4 xxs:px-2">
                             Find Pokémon stats and abilities with <span className="text-red-400 font-semibold">
                                                                     PokeAPI.
-                                                                </span>
+                                                                  </span>
                         </p>
                     </div>
                     <div className="flex justify-center gap-3 mt-2">
