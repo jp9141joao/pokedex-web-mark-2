@@ -20,9 +20,8 @@ export default function AboutApiButton() {
     
     return (
         <Sheet>
-            <SheetTrigger>
+            <SheetTrigger asChild>
                 <Button
-                    type="button"
                     size={"lg"}
                     className="xxs:text-lg rounded-4xl"
                 >
@@ -35,17 +34,15 @@ export default function AboutApiButton() {
                         Discover the Ultimate Pokémon API
                     </SheetTitle>
                     <SheetDescription>
-                        <div className="mt-1">
-                            <p className="text-sm text-center text-white">
-                                The PokeAPI is an open-source, RESTful API that provides detailed 
-                                data about the Pokémon universe. It offers a wide range of information 
-                                such as Pokémon species, abilities, moves, types, and habitats. The API 
-                                is organized into several endpoints, each containing specific categories
-                                of data like Pokémon stats, moves, evolutions, abilities, battle types, 
-                                and regions. This API allows developers to access and integrate Pokémon-
-                                related data into apps, games, or websites in an easy-to-use JSON format.
-                            </p>
-                        </div>
+                        <span className="text-sm text-center text-white">
+                            The PokeAPI is an open-source, RESTful API that provides detailed 
+                            data about the Pokémon universe. It offers a wide range of information 
+                            such as Pokémon species, abilities, moves, types, and habitats. The API 
+                            is organized into several endpoints, each containing specific categories
+                            of data like Pokémon stats, moves, evolutions, abilities, battle types, 
+                            and regions. This API allows developers to access and integrate Pokémon-
+                            related data into apps, games, or websites in an easy-to-use JSON format.
+                        </span>
                     </SheetDescription>
                 </SheetHeader>
                 <SheetFooter>
