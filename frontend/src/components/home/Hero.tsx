@@ -18,7 +18,7 @@ export default function Hero() {
         <div className="grid gap-1">
             <div>
                 <img 
-                    src={ "" } 
+                    src={PikachuImage} 
                     alt="Pikachu" 
                     className="px-14 xxs:px-10"
                 />
