@@ -22,6 +22,7 @@ export default function AboutApiButton() {
         <Sheet>
             <SheetTrigger>
                 <Button
+                    type="button"
                     size={"lg"}
                     className="xxs:text-lg rounded-4xl"
                 >
@@ -48,11 +49,11 @@ export default function AboutApiButton() {
                     </SheetDescription>
                 </SheetHeader>
                 <SheetFooter>
-                    <div className="h-[45vh] xxs:h-[60vh] overflow-hidden rounded-t-4xl">
+                    <div className="h-[45vh] xxs:h-[45vh] overflow-hidden rounded-t-4xl">
                         <img 
                             src={Pokemons} 
                             alt="Noctali" 
-                            className="w-full h-full object-cover object-[50%_60%]"
+                            className="w-full h-full object-cover object-[20%_50%]"
                         />
                     </div>
                 </SheetFooter>
