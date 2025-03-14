@@ -8,10 +8,8 @@ import {
     Dialog,
     DialogContent,
     DialogDescription,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
-    DialogTrigger,
 } from "@/components/ui/dialog"
 import IconGoogle from "@/assets/icons8-google-logo-48.png"
 
