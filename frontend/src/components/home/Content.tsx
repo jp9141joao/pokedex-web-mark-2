@@ -4,7 +4,7 @@ import { useScroll } from "./ScrollContext";
 
 export const Content = () => {
     
-    const { scrollLeft, setScrollLeft } = useScroll();
+    const { scrollLeft } = useScroll();
     
     return (
         <div className="grid flex-grow">

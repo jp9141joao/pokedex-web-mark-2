@@ -6,7 +6,7 @@ import { useScroll } from "./ScrollContext";
 
 export const Hero = () => {
 
-    const { scrollLeft, setScrollLeft } = useScroll();
+    const { setScrollLeft } = useScroll();
 
     return (
         <div className="grid gap-1">
