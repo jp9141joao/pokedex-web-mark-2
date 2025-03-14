@@ -1,4 +1,4 @@
-export const Credits = () => {
+export default function Credits() {
 
     return (
         <footer>

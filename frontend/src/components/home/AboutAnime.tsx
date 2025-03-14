@@ -1,6 +1,12 @@
-import Image from "@/assets/Charizard-Pokemon-Clip-Art-Transparent-PNG.png"
+import CharizardImage from "@/assets/charizard.png"
+import { useEffect } from "react"
+import { preload } from "react-dom";
 
-export const AboutAnime = () => {
+export default function AboutAnime() {
+
+    useEffect(() => {
+        preload(CharizardImage, { as: 'image' });
+    }, []);
 
     return (
         <div className="grid place-items-center flex-grow gap-10">
@@ -24,7 +30,7 @@ export const AboutAnime = () => {
             </div>
             <div className="w-full">
                 <img 
-                    src={Image} 
+                    src={CharizardImage} 
                     alt="pokeball" 
                     className="w-full h-full object-cover object-[10%_0%]"
                 />

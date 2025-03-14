@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Button } from "./ui/button"
 import { useScroll } from "./home/ScrollContext";
 
-export const Navbar = () => {
+export default function Navbar() {
 
     const [ isLoggedIn, setIsLoggedIn ] = useState<boolean>(false);
     const { scrollLeft, setScrollLeft } = useScroll();
@@ -31,7 +31,7 @@ export const Navbar = () => {
                     <Button
                         type="button"
                         onClick={() => setScrollLeft(false)}
-                        className="text-lg font-semibold  transition-transform duration-200 hover:scale-107 rounded-4xl"
+                        className="text-lg font-semibold  transition-transform duration-200 lg:hover:scale-107 rounded-4xl"
                     >
                         { scrollLeft ? "Go back" : "Login" }
                     </Button>

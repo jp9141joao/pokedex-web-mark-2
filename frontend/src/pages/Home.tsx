@@ -1,11 +1,11 @@
-import { Credits } from "@/components/Credits"
-import { Navbar } from "@/components/Navbar"
-import  { Content } from "@/components/home/Content"
+import Credits from "@/components/Credits"
+import Navbar from "@/components/Navbar"
+import  Content  from "@/components/home/Content"
 import { ScrollProvider } from "@/components/home/ScrollContext";
 import { useEffect } from "react";
 
 
-export const Home = () => {
+export default function Home() {
 
     useEffect(() => {
         const setVh = () => {

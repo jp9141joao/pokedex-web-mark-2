@@ -1,8 +1,8 @@
-import { Hero } from "./Hero";
-import { AboutAnime } from "./AboutAnime";
+import Hero from "./Hero";
+import AboutAnime from "./AboutAnime";
 import { useScroll } from "./ScrollContext";
 
-export const Content = () => {
+export default function Content() {
     
     const { scrollLeft } = useScroll();
     

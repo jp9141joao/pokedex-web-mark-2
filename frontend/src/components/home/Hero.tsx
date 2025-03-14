@@ -1,12 +1,18 @@
 import { Button } from "../ui/button";
 import { IoIosArrowRoundForward } from "react-icons/io";
-import { AboutApiButton } from "./AboutApiAButton";
+import AboutApiButton  from "./AboutApiAButton";
 import PikachuImage from "@/assets/picachu.png";
 import { useScroll } from "./ScrollContext";
+import { useEffect } from "react";
+import { preload } from "react-dom";
 
-export const Hero = () => {
+export default function Hero() {
 
     const { setScrollLeft } = useScroll();
+
+    useEffect(() => {
+        preload(PikachuImage, { as: 'image'});
+    }, []);
 
     return (
         <div className="grid gap-1">
@@ -35,7 +41,7 @@ export const Hero = () => {
                     variant={"outline"}
                     size={"lg"}
                     onClick={() => setScrollLeft(true)}
-                    className="flex items-center xxs:text-lg gap-0 transform transition-all duration-400 hover:translate-x-2 hover:xs:translate-x-3 font-semibold border-black rounded-4xl"
+                    className="flex items-center xxs:text-lg gap-0 transform transition-all duration-400 lg:hover:translate-x-3 font-semibold border-black rounded-4xl"
                 >
                     <p>
                         About Anime
