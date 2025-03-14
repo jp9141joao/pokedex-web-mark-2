@@ -7,6 +7,7 @@
 @theme {
   --breakpoint-xxs: 390px;
   --breakpoint-xs: 450px;
+  --color-white: #f4f4f4;
 }
 
 :root {
