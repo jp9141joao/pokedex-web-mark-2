@@ -27,7 +27,7 @@ export const Navbar = () => {
                         PokeWiki
                     </h1>
                 </div>
-                <div className={`transition-all duration-400 ${ scrollLeft ? "-translate-x-[62vw] opacity-100" : "translate-x-0 opacity-100"}`}>
+                <div className={`transition-all duration-400 ${ scrollLeft ? "-translate-x-[62vw] xxs:-translate-x-[66vw] opacity-100" : "translate-x-0 opacity-100"}`}>
                     <Button
                         type="button"
                         onClick={() => setScrollLeft(false)}
