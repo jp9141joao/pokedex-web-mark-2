@@ -35,7 +35,7 @@ export const Hero = () => {
                     variant={"outline"}
                     size={"lg"}
                     onClick={() => setScrollLeft(true)}
-                    className="flex items-center text-lg gap-0 transform transition-all duration-400 hover:translate-x-1 hover:xs:translate-x-3 font-semibold border-black rounded-4xl"
+                    className="flex items-center xxs:text-lg gap-0 transform transition-all duration-400 hover:translate-x-1 hover:xs:translate-x-3 font-semibold border-black rounded-4xl"
                 >
                     <p>
                         About Anime

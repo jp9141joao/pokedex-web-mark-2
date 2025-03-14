@@ -19,7 +19,7 @@ export const Home = () => {
     },[]);
 
     return (
-        <div className="flex flex-col h-[calc(var(--vh,1vh)*97)] mx-[1.3em] my-[0.8em]">
+        <div className="flex flex-col h-[calc(var(--vh,1vh)*96)] mx-[1.3em] my-[0.8em] overflow-hidden">
             <ScrollProvider>
                 <Navbar />
                 <Content />

@@ -9,11 +9,11 @@ export const Content = () => {
     return (
         <div className="grid flex-grow">
             <div 
-                className="grid place-items-center gap-1"
+                className="relative grid place-items-center gap-1"
             >
                 <div 
                     className={`
-                        transition-all duration-400
+                        transition-all duration-400 absolute
                         ${ scrollLeft ? "-translate-x-full opacity-0" : "translate-x-0 opacity-100" }
                     `}
                 >
@@ -21,7 +21,7 @@ export const Content = () => {
                 </div>
                 <div
                     className={`
-                        transition-all duration-400
+                        overflow-auto transition-all duration-400 absolute
                         ${ scrollLeft ? "translate-x-0 opacity-100" : "translate-x-full opacity-0" }
                     `}
                 >

@@ -20,17 +20,14 @@ export const Navbar = () => {
     if (!isLoggedIn) {
         return (
             <nav 
-                className={`
-                    flex justify-between
-                    transition-all duration-400
-                `}
+                className="flex justify-between"
             >
-                <div>
+                <div className={`transition-all duration-400 ${ scrollLeft ? "-translate-x-full opacity-0" : "translate-x-0 opacity-100"}`}>
                     <h1 className="text-2xl font-semibold">
                         PokeWiki
                     </h1>
                 </div>
-                <div>
+                <div className={`transition-all duration-400 ${ scrollLeft ? "-translate-x-[62vw] opacity-100" : "translate-x-0 opacity-100"}`}>
                     <Button
                         type="button"
                         onClick={() => setScrollLeft(false)}
