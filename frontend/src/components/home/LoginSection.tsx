@@ -1,17 +1,20 @@
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog"
-import IconGoogle from "@/assets/icons8-google-logo-48.png";
-import { Button } from "../ui/button";
-import { Separator } from "@/components/ui/separator";
-import { Label } from "@radix-ui/react-label";
-import { Input } from "../ui/input";
+import { useState } from "react";
+import SignInForm from "./login/signInForm";
+import SignUpForm from "./login/signUpForm";
+import ForgotPasswordForm from "./login/forgotPasswordForm";
 
 export default function LoginSection({ showDialog, setShowDialog }: { showDialog: boolean, setShowDialog: (value: boolean) => void }) {
+
+    const [ formType, setFormType ] = useState<'SignIn' | 'SignUp' | 'ForgotPassword'>('SignIn');
+    const [ fullName, setFullName ] = useState<string>('');
+    const [ email, setEmail ] = useState<string>('');
+    const [ password, setPassword ] = useState<string>(''); 
 
     return (
         <Dialog
@@ -20,67 +23,46 @@ export default function LoginSection({ showDialog, setShowDialog }: { showDialog
                 
                 if (!open) {
                     setShowDialog(false);
+                    setFormType("SignIn")
                 }
             }}
         >
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent  
+                onOpenAutoFocus={(e) => e.preventDefault()}  
+                className="sm:max-w-[425px]"
+            >
                 <DialogHeader>
-                    <DialogTitle className="text-xl">
-                        Sign In
+                    <DialogTitle className="text-3xl xxs:text-4xl">
+                        { 
+                            formType == "SignIn" ? " Sign In" : 
+                            formType == "SignUp" ? "Sign Up" :
+                            "Reset Password" 
+                        }
                     </DialogTitle>
-                    <div className="grid gap-5">
-                        <div className="grid gap-3 text-start">
-                            <div>
-                                <Label htmlFor="email">
-                                    Email
-                                </Label>
-                                <Input 
-                                    id="email"
-                                    value={""}
-                                    placeholder="name@example.com"
-                                    className="border-black rounded-4xl mt-1"
-                                />
-                            </div>
-                            <div>
-                                <Label htmlFor="password">
-                                    Password
-                                </Label>
-                                <Input 
-                                    id="password"
-                                    value={""}
-                                    placeholder="name@example.com"
-                                    className="border-black rounded-4xl mt-1"
-                                />
-                            </div>
-                            <div>
-                                <Button className="w-full rounded-4xl mt-1">
-                                    Sign In
-                                </Button>
-                            </div>
-                        </div>
-                        <div className="flex justify-center items-center gap-3">
-                            <Separator className="bg-black max-w-[20vw]" />
-                            <p>
-                                OR
-                            </p>
-                            <Separator className="bg-black max-w-[20vw]" />
-                        </div>
-                        <div>
-                            <Button
-                                variant={"outline"}
-                                className="w-full flex grid-2 items-center rounded-4xl border-black"
-                            >
-                                <img src={IconGoogle} alt="" className="size-6" />
-                                <p>
-                                    Login with Google
-                                </p>
-                            </Button>
-                        </div>
-                    </div>
                 </DialogHeader>
-                <div>
-
-                </div>
+                {
+                    formType == "SignIn" ? 
+                        <SignInForm 
+                            setFormType={setFormType}
+                            setFullName={setFullName}
+                            email={email}
+                            setEmail={setEmail}
+                            password={password}
+                            setPassword={setPassword}
+                        /> :
+                    formType == "SignUp" ?
+                        <SignUpForm 
+                            setFormType={setFormType}
+                            fullName={fullName}
+                            setFullName={setFullName}
+                            email={email}
+                            setEmail={setEmail}
+                            password={password}
+                            setPassword={setPassword}
+                        /> :
+                        <ForgotPasswordForm 
+                        />
+                } 
             </DialogContent>
         </Dialog>
     )

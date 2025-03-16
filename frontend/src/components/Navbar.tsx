@@ -46,7 +46,7 @@ export default function Navbar() {
                             }}
                             className="text-lg font-semibold  transition-transform duration-200 lg:hover:scale-107 rounded-4xl"
                         >
-                            { scrollLeft ? "Go back" : "Login" }
+                            { scrollLeft ? "Go back" : "Log In" }
                         </Button>
                     </div>
                     <LoginSection showDialog={showDialog} setShowDialog={setShowDialog}/>
