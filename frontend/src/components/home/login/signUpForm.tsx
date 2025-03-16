@@ -5,12 +5,13 @@ import { Label } from "@/components/ui/label";
 export default function SignUpForm(
     { setFormType, fullName, setFullName, email, setEmail, password, setPassword }: 
     { 
-        setFormType: (value: 'SignIn' | 'SignUp') => void,
+        setFormType: (value: 'SignIn' | 'SignUp' | 'ForgotPassword') => void,
         fullName: string, setFullName: (value: string) => void,
         email: string, setEmail: (value: string) => void,
         password: string, setPassword: (value: string) => void,
     }
 ) {
+
     return (
         <div className="grid gap-5">
             <div className="grid gap-3 text-start">
@@ -51,7 +52,13 @@ export default function SignUpForm(
                     />
                 </div>
                 <div>
-                    <Button 
+                    <Button
+                        onClick={() => {
+                            setFormType("SignIn");
+                            setFullName("");
+                            setEmail("");
+                            setPassword("");
+                        }}
                         className="w-full text-sm xxs:text-base rounded-4xl mt-2">
                         Create Account
                     </Button>

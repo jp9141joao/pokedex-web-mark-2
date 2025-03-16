@@ -14,7 +14,9 @@ export default function LoginSection({ showDialog, setShowDialog }: { showDialog
     const [ formType, setFormType ] = useState<'SignIn' | 'SignUp' | 'ForgotPassword'>('SignIn');
     const [ fullName, setFullName ] = useState<string>('');
     const [ email, setEmail ] = useState<string>('');
-    const [ password, setPassword ] = useState<string>(''); 
+    const [ password, setPassword ] = useState<string>('');
+    const [ newPassword, setNewPassword ] = useState<string>('');
+    const [ verificationCode, setVerificationCode ] = useState<string>('');
 
     return (
         <Dialog
@@ -61,6 +63,15 @@ export default function LoginSection({ showDialog, setShowDialog }: { showDialog
                             setPassword={setPassword}
                         /> :
                         <ForgotPasswordForm 
+                            email={email}
+                            setEmail={setEmail}
+                            password={password}
+                            setPassword={setPassword}
+                            newPassword={newPassword}
+                            setNewPassword={setNewPassword}
+                            verificationCode={verificationCode}
+                            setVerificationCode={setVerificationCode}
+                            setFormType={setFormType}
                         />
                 } 
             </DialogContent>
