@@ -27,6 +27,13 @@ export default function ForgotPasswordForm(
 
     if (step == 1) {
 
+        () => {
+            setIsLoading(true);
+            setIsLoadingVerification(true);
+            setIsLoading(false);
+            setIsLoadingVerification(false);
+        }
+
         return (
             <div className="grid gap-2">
                 <div>
