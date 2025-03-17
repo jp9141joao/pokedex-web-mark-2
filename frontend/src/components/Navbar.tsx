@@ -44,7 +44,7 @@ export default function Navbar() {
                                     setShowDialog(true);
                                 }
                             }}
-                            className="text-lg font-semibold  transition-transform duration-200 lg:hover:scale-107 rounded-4xl"
+                            className="text-sm xxs:text-base xs:text-sm sm:text-lg font-semibold transition-transform duration-200 lg:hover:scale-107 rounded-4xl"
                         >
                             { scrollLeft ? "Go back" : "Log In" }
                         </Button>

@@ -51,7 +51,7 @@ export default function ForgotPasswordForm(
                 <div className="mt-2">
                     <Button
                         variant={"outline"}
-                        className="w-full border-black rounded-4xl"
+                        className="w-full text-sm xxs:text-base border-black rounded-4xl"
                     >
                         {
                             isLoadingVerification ?
@@ -63,7 +63,7 @@ export default function ForgotPasswordForm(
                 <div>
                     <Button
                         onClick={() => setStep(2)}
-                        className="w-full rounded-4xl"
+                        className="w-full text-sm xxs:text-base rounded-4xl"
                     >
                         {
                             isLoading ?
@@ -93,7 +93,7 @@ export default function ForgotPasswordForm(
                 <div className="mt-1">
                     <Button
                         onClick={() => setStep(3)}
-                        className="w-full rounded-4xl"
+                        className="w-full text-sm xxs:text-base rounded-4xl"
                     >
                         {
                             isLoading ?
@@ -138,7 +138,7 @@ export default function ForgotPasswordForm(
                             setStep(1);
                             setFormType('SignIn');
                         }}
-                        className="w-full rounded-4xl"
+                        className="w-full text-sm xxs:text-base rounded-4xl"
                     >
                         {
                             isLoading ?

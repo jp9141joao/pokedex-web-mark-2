@@ -5,6 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+  --font-size-sm: 0px;
   --breakpoint-xxs: 390px;
   --breakpoint-xs: 450px;
   --color-white: #f4f4f4;

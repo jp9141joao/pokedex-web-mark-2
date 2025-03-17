@@ -20,16 +20,16 @@ export default function Hero() {
                 <img 
                     src={PikachuImage} 
                     alt="Pikachu" 
-                    className="px-14 xxs:px-10"
+                    className="px-14 xxs:px-10 xs:px-36"
                 />
             </div>
             <div className="mt-3">
-                <h1 className="text-3xl xxs:text-4xl text-center font-semibold px-8 xxs:px-3">
+                <h1 className="text-2xl xxs:text-3xl xs:text-4xl sm:text-5xl text-center font-semibold px-8 xxs:px-0 sm:px-6">
                     Explore the Pokémon Universe!
                 </h1>
             </div>
             <div>
-                <p className="text-xl xxs:text-2xl text-center text-gray-800 px-4 xxs:px-2">
+                <p className="text-lg xxs:text-xl xs:text-2xl sm:text-3xl text-center text-gray-800 px-4 xxs:px-2 xs:px-14 sm:px-32 sm:mt-1">
                     Find Pokémon stats and abilities with <span className="text-red-400 font-semibold">
                                                             PokeAPI.
                                                           </span>
@@ -44,12 +44,12 @@ export default function Hero() {
                         variant={"outline"}
                         size={"lg"}
                         onClick={() => setScrollLeft(true)}
-                        className="flex items-center xxs:text-lg gap-0 transform transition-all duration-400 lg:hover:translate-x-3 font-semibold border-black rounded-4xl"
+                        className="flex items-center text-sm xxs:text-base xs:text-sm sm:text-lg gap-0 transform transition-all duration-400 lg:hover:translate-x-3 font-semibold border-black"
                     >
                         <p>
                             About Anime
                         </p>
-                        <IoIosArrowRoundForward className="size-7" />
+                        <IoIosArrowRoundForward className="size-6 xxs:size-7 xs:size-6 sm:size-7" />
                     </Button>
                 </div>
             </div>
