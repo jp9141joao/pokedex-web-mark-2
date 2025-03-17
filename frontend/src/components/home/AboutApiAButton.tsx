@@ -23,7 +23,7 @@ export default function AboutApiButton() {
             <SheetTrigger asChild>
                 <Button
                     size={"lg"}
-                    className="text-sm xxs:text-base xs:text-sm sm:text-lg"
+                    className="text-sm xxs:text-base xs:text-sm sm:text-lg lg:text-base"
                 >
                     About API
                 </Button>
@@ -48,7 +48,7 @@ export default function AboutApiButton() {
                 <SheetFooter>
                     <div className="h-[45vh] xxs:h-[45vh] overflow-hidden rounded-t-4xl">
                         <img 
-                            src={Pokemons} 
+                            src={""} 
                             alt="Noctali" 
                             className="w-full h-full object-cover object-[20%_50%]"
                         />

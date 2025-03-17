@@ -69,7 +69,11 @@ export default function SignInForm(
                     variant={"outline"}
                     className="w-full flex grid-2 items-center rounded-4xl border-black"
                 >
-                    <img src={IconGoogle} alt="" className="size-5 xxs:size-6" />
+                    <img 
+                        src={'IconGoogle'} 
+                        alt="" 
+                        className="size-5 xxs:size-6" 
+                    />
                     <p className="text-sm xxs:text-base">
                         Login with Google
                     </p>

@@ -30,7 +30,7 @@ export default function AboutAnime() {
             </div>
             <div className="w-full">
                 <img 
-                    src={CharizardImage} 
+                    src={""} 
                     alt="pokeball" 
                     className="w-full h-full object-cover object-[10%_0%]"
                 />
