@@ -23,7 +23,7 @@ export default function AboutApiButton() {
             <SheetTrigger asChild>
                 <Button
                     size={"lg"}
-                    className="text-sm xxs:text-base xs:text-sm sm:text-lg lg:text-base"
+                    className="text-sm xxs:text-base xs:text-sm sm:text-xl lg:text-base"
                 >
                     About API
                 </Button>

@@ -3,7 +3,7 @@ import { useEffect } from "react"
 import { preload } from "react-dom";
 
 export default function AboutAnime() {
-
+7
     useEffect(() => {
         preload(CharizardImage, { as: 'image' });
     }, []);
