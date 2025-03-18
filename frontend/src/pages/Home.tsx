@@ -1,5 +1,5 @@
 import Credits from "@/components/Credits"
-import Navbar from "@/components/Navbar"
+import NavbarLoggedOut from "@/components/navbar/NavbarLoggedOut"
 import  Content  from "@/components/home/Content"
 import { ScrollProvider } from "@/components/home/ScrollContext";
 import { useEffect } from "react";
@@ -19,9 +19,9 @@ export default function Home() {
     },[]);
 
     return (
-        <div className="flex flex-col h-[calc(var(--vh,1vh)*96)] min-h-[100vw] mx-[1.3em] sm:mx-[1.8em] my-[0.8em] sm:my-[1.1em] overflow-hidden">
+        <div className="flex flex-col min-h-[90vh]  h-[calc(var(--vh,1vh)*96)] sm:h-[calc(var(--vh,1vh)*95)] mx-[1.3em] sm:mx-[1.8em] my-[0.8em] sm:my-[1.1em] overflow-hidden">
             <ScrollProvider>
-                <Navbar />
+                <NavbarLoggedOut />
                 <Content />
                 <Credits />
             </ScrollProvider>

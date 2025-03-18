@@ -23,18 +23,18 @@ export default function AboutApiButton() {
             <SheetTrigger asChild>
                 <Button
                     size={"lg"}
-                    className="text-sm xxs:text-base xs:text-sm sm:text-xl lg:text-base"
+                    className="w-full text-sm xxs:text-base xs:text-sm sm:text-base lg:text-lg lg:hover:scale-105"
                 >
                     About API
                 </Button>
             </SheetTrigger>
-            <SheetContent side="bottom" className="max-h-[83vh] rounded-t-4xl">
+            <SheetContent side="bottom" className="max-h-[83vh] xs:max-h-[86vh] xs:px-[14vw] sm:px-[20vw] rounded-t-4xl">
                 <SheetHeader className="pb-0 xxs:pb-4">
                     <SheetTitle className="text-xl xxs:text-4xl text-center text-white mt-6">
                         Discover the Ultimate Pokémon API
                     </SheetTitle>
                     <SheetDescription>
-                        <span className="text-sm text-center text-white">
+                        <span className=" text-white">
                             The PokeAPI is an open-source, RESTful API that provides detailed 
                             data about the Pokémon universe. It offers a wide range of information 
                             such as Pokémon species, abilities, moves, types, and habitats. The API 
