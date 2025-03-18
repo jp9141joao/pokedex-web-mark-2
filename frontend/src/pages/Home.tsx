@@ -19,7 +19,7 @@ export default function Home() {
     },[]);
 
     return (
-        <div className="flex flex-col h-[calc(var(--vh,1vh)*96)] mx-[1.3em] sm:mx-[1.8em] my-[0.8em] sm:my-[1.1em] overflow-hidden">
+        <div className="flex flex-col h-[calc(var(--vh,1vh)*96)] min-h-[100vw] mx-[1.3em] sm:mx-[1.8em] my-[0.8em] sm:my-[1.1em] overflow-hidden">
             <ScrollProvider>
                 <Navbar />
                 <Content />
