@@ -5,13 +5,13 @@ import LoginSection from "../home/LoginSection";
 
 
 export default function NavbarLoggedOut() {
+
   const { scrollLeft, setScrollLeft } = useScroll();
-  const [showDialog, setShowDialog] = useState(false);
-  
+  const [ showDialog, setShowDialog ] = useState<boolean>(false);
+  const [ maxTranslate, setMaxTranslate ] = useState<number>(0);
   const navRef = useRef<HTMLElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
   
-  const [maxTranslate, setMaxTranslate] = useState(0);
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
@@ -19,6 +19,7 @@ export default function NavbarLoggedOut() {
     if (token) {
       localStorage.removeItem("authToken");
     }
+
   }, []);
 
   const updateTranslate = useCallback(() => {
@@ -69,7 +70,7 @@ export default function NavbarLoggedOut() {
           ${ scrollLeft ? "-translate-x-full opacity-0" : "translate-x-0 opacity-100" }
         `}
       >
-        <h1 className="text-2xl font-semibold">
+        <h1 className="text-xl xxs:text-2xl font-semibold">
           PokeWiki
         </h1>
       </div>

@@ -27,14 +27,14 @@ export default function AboutApiButton() {
                 >
                     About API
                 </Button>
-            </SheetTrigger>
-            <SheetContent side="bottom" className="max-h-[83vh] xs:max-h-[86vh] xs:px-[14vw] sm:px-[20vw] rounded-t-4xl">
+            </SheetTrigger> 
+            <SheetContent side="bottom" className="max-h-[83vh] xs:max-h-[86vh] lg:max-h-[90vh] xs:px-[14vw] sm:px-[20vw] lg:px-[30vw] rounded-t-4xl">
                 <SheetHeader className="pb-0 xxs:pb-4">
-                    <SheetTitle className="text-xl xxs:text-4xl text-center text-white mt-6">
+                    <SheetTitle className="text-2xl xxs:text-3xl xs:text-2xl sm:text-3xl lg:text-4xl xl:text-xl text-center text-white mt-7">
                         Discover the Ultimate Pokémon API
                     </SheetTitle>
-                    <SheetDescription>
-                        <span className=" text-white">
+                    <SheetDescription className="mt-2">
+                        <span className="text-white">
                             The PokeAPI is an open-source, RESTful API that provides detailed 
                             data about the Pokémon universe. It offers a wide range of information 
                             such as Pokémon species, abilities, moves, types, and habitats. The API 
@@ -46,9 +46,9 @@ export default function AboutApiButton() {
                     </SheetDescription>
                 </SheetHeader>
                 <SheetFooter>
-                    <div className="h-[45vh] xxs:h-[45vh] overflow-hidden rounded-t-4xl">
+                    <div className="h-[45vh] xxs:h-[45vh] lg:h-[55vh] xl:w-[50vw] overflow-hidden rounded-t-4xl">
                         <img 
-                            src={""} 
+                            src={Pokemons} 
                             alt="Noctali" 
                             className="w-full h-full object-cover object-[20%_50%]"
                         />
