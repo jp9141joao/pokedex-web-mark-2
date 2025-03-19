@@ -63,7 +63,7 @@ export default function NavbarLoggedOut() {
   };
 
   return (
-    <nav ref={navRef} className="w-full h-[36px] relative flex justify-between overflow-hidden">
+    <nav ref={navRef} className="max-w-[1536px] w-full h-[36px] relative flex justify-between overflow-hidden">
       <div 
         className={`
           transition-all duration-400 transform

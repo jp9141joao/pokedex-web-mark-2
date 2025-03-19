@@ -8,7 +8,19 @@
   --font-size-sm: 0px;
   --breakpoint-xxs: 390px;
   --breakpoint-xs: 450px;
-  --color-white: #f4f4f4;
+  --color-white:#f4f4f4;
+}
+
+.title-responsive {
+  @apply text-2xl xxs:text-3xl xs:text-2xl sm:text-3xl lg:text-4xl xl:text-[3.2vw] font-semibold
+}
+
+.para-responsive {
+  @apply text-lg xxs:text-xl xs:text-lg sm:text-xl xl:text-[1.8vw]
+}
+
+.text-button-responsive {
+  @apply text-sm xxs:text-base xs:text-sm sm:text-base lg:text-lg font-semibold
 }
 
 :root {
