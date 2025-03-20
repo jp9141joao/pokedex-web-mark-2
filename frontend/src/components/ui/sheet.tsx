@@ -64,14 +64,14 @@ function SheetContent({
           side === "top" &&
             "data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top inset-x-0 top-0 h-auto border-b",
           side === "bottom" &&
-            "bg-primary data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom inset-x-0 2xl:fixed 2xl:left-1/2 bottom-0 2xl:transform 2xl:-translate-x-1/2 2xl:-translate-y-1/4 xl:w-3/4 h-auto border-t",
+            "bg-primary data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom inset-x-0 lg:fixed lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 lg:w-3/4 bottom-0 lg:bottom-auto h-auto border-t",
           className
         )}
         {...props}
       >
         {children}
         <SheetPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 disabled:pointer-events-none">
-          <XIcon className="text-white size-4 m-1.5 sm:my-3 sm:mx-2.5 lg:m-3" />
+          <XIcon className="text-white size-4 m-1.5 sm:my-2 sm:mx-2.5 lg:m-3" />
           <span className="sr-only">Close</span>
         </SheetPrimitive.Close>
       </SheetPrimitive.Content>
