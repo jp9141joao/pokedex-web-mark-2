@@ -15,12 +15,12 @@ export default function Hero() {
     }, []);
 
     return (
-        <div className="grid gap-1">
+        <div className="grid gap-1 lg:w-[100vw] max-w-[1536px]">
             <div>
                 <img 
-                    src={""} 
+                    src={PikachuImage} 
                     alt="Pikachu"
-                    className="px-14 xxs:px-10 xs:px-36 sm:px-[24vw] lg:px-[38vw]"
+                    className="px-14 xxs:px-10 xs:px-36 sm:px-50 lg:px-96 xl:px-[30em]"
                 />
             </div>
             <div className="mt-3 lg:mt-0">
@@ -29,28 +29,29 @@ export default function Hero() {
                 </h1>
             </div>
             <div>
-                <p className="para-responsive text-center text-gray-800 px-6 xxs:px-6 xs:px-26 sm:px-32 md:px-0 sm:mt-1 lg:mt-1 xl:mt-2">
+                <p className="para-responsive text-center text-gray-800 px-6 xxs:px-6 xs:px-26 sm:px-32 md:px-0 sm:mt-1 lg:mt-1 2xl:mt-2">
                     Find Pokémon stats and abilities with <span className="text-red-400 font-semibold">
                                                             PokeAPI.
                                                           </span>
                 </p>
             </div>
-            <div className="flex justify-center gap-3 xl:gap-[0.7vw] mt-2 sm:mt-3 lg:mt-2">
+            <div className="flex justify-center gap-3 xl:gap-4 mt-2 sm:mt-3 lg:mt-2">
                 <div>
-                    <AboutApiButton />
+                    <AboutApiButton/>
                 </div>
                 <div>
                     <Button
                         variant={"outline"}
                         size={"responsive"}
                         onClick={() => setScrollLeft(true)}
-                        className="text-button-responsive transform transition-all duration-400 lg:hover:translate-x-3 xl:hover:translate-x-[1vw] border-black"
+                        className="text-button-responsive lg:hover:translate-x-3 border-black"
+                        style={{ color: "black" }}
                     >
                         <div className="flex items-center">
                             <p>
                                 About Anime
                             </p>
-                            <IoIosArrowRoundForward className="size-6 xxs:size-7 xs:size-6 lg:size-7" />
+                            <IoIosArrowRoundForward className=" size-6 xxs:size-7 xs:size-6 lg:size-7 2xl:size-8" />
                         </div>
                     </Button>
                 </div>

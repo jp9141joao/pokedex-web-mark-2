@@ -7,7 +7,7 @@ export default function Content() {
     const { scrollLeft } = useScroll();
     
     return (
-        <div className="grid flex-grow">
+        <div className="max-w-[1536px] grid flex-grow">
             <div 
                 className="relative grid place-items-center gap-1"
             >
