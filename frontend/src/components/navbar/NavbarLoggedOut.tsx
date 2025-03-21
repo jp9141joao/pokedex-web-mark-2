@@ -64,10 +64,28 @@ export default function NavbarLoggedOut() {
 
   return (
     <nav ref={navRef} className="max-w-[1536px] w-full h-[40px] relative flex justify-between overflow-hidden">
+       <div
+        className={`
+          absolute transition-all duration-400 transform z-10
+          ${ scroll == "Bottom" ? "translate-y-0 opacity-100" : "-translate-y-[100vh] opacity-0" }
+        `}
+      >
+        <Button
+          onClick={() => setScroll("Left")}
+          className="text-sm xxs:text-base xs:text-sm sm:text-base lg:text-lg font-semibold transition-transform duration-200 rounded-4xl"
+          style={{color: "white"}}
+        >
+          Scroll Up
+        </Button>
+      </div>
       <div 
         className={`
           transition-all duration-400 transform
-          ${ scroll == "Right" ? "-translate-x-full opacity-0" : "translate-x-0 opacity-100" }
+          ${ 
+            scroll == "Right" ? "-translate-x-full opacity-0" : 
+            scroll == "Bottom" ? "-translate-y-[100vh] opacity-0" :
+            "translate-x-0 opacity-100" 
+          }
         `}
       >
         <h1 className="text-xl xxs:text-2xl font-semibold">
@@ -76,27 +94,31 @@ export default function NavbarLoggedOut() {
       </div>
       <div
         ref={buttonRef}
-        className={`
-          right-0 transition-all duration-400 transform absolute top-0
-        `}
+        className="right-0 transition-all duration-400 transform absolute top-0 z-50"
         style={{
-          transform: scroll == "Right" ? `translateX(-${maxTranslate}px)` : "translateX(0)"
+          transform: 
+            scroll == "Right" ? `translateX(-${maxTranslate}px)` :
+            scroll == "Bottom" ? 'translateY(-100vh)' : 
+            "translateX(0)",
+          opacity: scroll == "Bottom" ? "0" : "100",
+          transition: "transform 0.3s ease, opacity 0.3s ease",
+          willChange: "transform, opacity"
         }}
+        
       >
         <Button
-          type="button"
-          size={"lg"}
           onClick={handleButtonClick}
-          className="text-button-responsive rounded-4xl"
+          className="text-sm xxs:text-base xs:text-sm sm:text-base lg:text-lg font-semibold transition-transform duration-200 rounded-4xl"
           style={{color: "white"}}
         >
           { scroll == "Right" ? "Go back" : "Log In" }
         </Button>
         <LoginSection 
           showDialog={showDialog} 
-          setShowDialog={setShowDialog} 
+          setShowDialog={setShowDialog}
         />
       </div>
+     
     </nav>
   );
 }

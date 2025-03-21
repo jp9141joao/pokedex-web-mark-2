@@ -1,6 +1,6 @@
 import { Button } from "../ui/button";
 import { IoIosArrowRoundForward } from "react-icons/io";
-import AboutApiButton  from "./AboutApiAButton";
+import AboutApiButton  from "./AboutApi";
 import PikachuImage from "@/assets/picachu.png";
 import { useScroll } from "./ScrollContext";
 import { useEffect } from "react";
@@ -18,7 +18,7 @@ export default function Hero() {
         <div className="grid gap-1 lg:w-[100vw] max-w-[1536px]">
             <div>
                 <img 
-                    src={PikachuImage} 
+                    src={""} 
                     alt="Pikachu"
                     className="px-14 xxs:px-10 xs:px-36 sm:px-50 lg:px-96 xl:px-[30em]"
                 />
@@ -36,8 +36,15 @@ export default function Hero() {
                 </p>
             </div>
             <div className="flex justify-center gap-3 xl:gap-4 mt-2 sm:mt-3 lg:mt-2">
-                <div onClick={() => setScroll("Bottom")}>
-                    test
+                <div>
+                    <Button
+                        size={"responsive"}
+                        onClick={() => setScroll("Bottom")}
+                        className="text-button-responsive rounded-4xl"
+                        style={{color: 'white'}}
+                    >
+                        About API
+                    </Button>
                 </div>
                 <div>
                     <Button
