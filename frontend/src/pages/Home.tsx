@@ -22,7 +22,8 @@ export default function Home() {
         <div 
             className="
                 flex flex-col lg:items-center
-                min-h-[90vh] h-[calc(var(--vh,1vh)*96)] sm:h-[calc(var(--vh,1vh)*95)]
+                min-h-[100vw] lg:min-h-[40vw] 
+                h-[calc(var(--vh,1vh)*96)] sm:h-[calc(var(--vh,1vh)*95)] lg:h-[calc(var(--vh,1vh)*94)] xl:h-[calc(var(--vh,1vh)*96)]
                 mx-[1.3em] sm:mx-[1.8em] my-[0.8em] sm:my-[1.1em] 
                 overflow-hidden
             "

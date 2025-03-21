@@ -1,13 +1,13 @@
 import React, { createContext, useContext, useState } from "react"
 
-const ScrollContext = createContext<{ scrollLeft: boolean, setScrollLeft: (value: boolean) => void } | undefined>(undefined);
+const ScrollContext = createContext<{ scroll: 'Left' | 'Right' | 'Bottom', setScroll: (value: 'Left' | 'Right' | 'Bottom') => void } | undefined>(undefined);
 
 export const ScrollProvider = ({ children }: { children: React.ReactNode }) => {
     
-    const [ scrollLeft, setScrollLeft ] = useState<boolean>(false);
+    const [ scroll, setScroll ] = useState<'Left' | 'Right' | 'Bottom'>('Left');
 
     return (
-        <ScrollContext.Provider value={{ scrollLeft, setScrollLeft }}>
+        <ScrollContext.Provider value={{ scroll, setScroll }}>
             { children }
         </ScrollContext.Provider>
     )

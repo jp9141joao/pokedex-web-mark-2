@@ -8,7 +8,7 @@ import { preload } from "react-dom";
 
 export default function Hero() {
 
-    const { setScrollLeft } = useScroll();
+    const { setScroll } = useScroll();
 
     useEffect(() => {
         preload(PikachuImage, { as: 'image'});
@@ -36,14 +36,14 @@ export default function Hero() {
                 </p>
             </div>
             <div className="flex justify-center gap-3 xl:gap-4 mt-2 sm:mt-3 lg:mt-2">
-                <div>
-                    <AboutApiButton/>
+                <div onClick={() => setScroll("Bottom")}>
+                    test
                 </div>
                 <div>
                     <Button
                         variant={"outline"}
                         size={"responsive"}
-                        onClick={() => setScrollLeft(true)}
+                        onClick={() => setScroll("Right")}
                         className="text-button-responsive lg:hover:translate-x-3 border-black"
                         style={{ color: "black" }}
                     >
