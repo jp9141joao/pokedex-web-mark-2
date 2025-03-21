@@ -86,7 +86,7 @@ export default function NavbarLoggedOut() {
         <Button
           type="button"
           onClick={handleButtonClick}
-          className="text-sm xxs:text-base xs:text-sm sm:text-base lg:text-lg font-semibold transition-transform duration-200 rounded-4xl"
+          className="text-button-responsive"
         >
           { scrollLeft ? "Go back" : "Log In" }
         </Button>

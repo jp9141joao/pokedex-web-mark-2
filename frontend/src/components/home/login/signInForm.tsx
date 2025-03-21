@@ -70,8 +70,8 @@ export default function SignInForm(
                     className="w-full flex grid-2 items-center rounded-4xl border-black"
                 >
                     <img 
-                        src={'IconGoogle'} 
-                        alt="" 
+                        src={IconGoogle} 
+                        alt="Icon Google" 
                         className="size-5 xxs:size-6" 
                     />
                     <p className="text-sm xxs:text-base">
