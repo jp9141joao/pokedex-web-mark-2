@@ -1,28 +1,22 @@
-import {
-    Sheet,
-    SheetContent,
-    SheetTrigger,
-  } from "@/components/ui/sheet"
-import { Button } from "../ui/button"
-import Pokemons from "@/assets/pokemon-unite.jpg"
+import Dragonite from "@/assets/Ivysaur.png"
 import { useEffect } from "react"
 import { preload } from "react-dom";
 
 export default function AboutApi() {
 
     useEffect(() => {
-        preload(Pokemons, { as: 'image'});
+        preload(Dragonite, { as: 'image'});
     }, []);
     
     return (
-        <div className="grid place-items-center items-center lg:grid-cols-2 rounded-4xl">
+        <div className="grid place-items-center items-center gap-5 lg:grid-cols-2 rounded-4xl">
             <div className="text-center">
                 <div className="2xl:px-8 max-w-auto">
                     <h1 className="title-responsive">
                         Discover the Ultimate Pokémon API
                     </h1>
                 </div>
-                <div className="2xl:px-26 2xl:mt-2">
+                <div className="mt-2 2xl:px-26 2xl:mt-2">
                     <p className="para-responsive">
                         The <span className="text-red-500">PokeAPI</span> is an open-source, RESTful API that provides detailed 
                         data about the Pokémon universe. It offers a wide range of information 
@@ -34,11 +28,11 @@ export default function AboutApi() {
                     </p>
                 </div>
             </div>
-            <div className="h-[55vh] xxs:h-[53vh] xs:h-[67vw] md:h-[82vw] lg:h-auto 2xl:h-[700px]">
+            <div>
                 <img 
-                    src={""} 
+                    src={Dragonite} 
                     alt="Pokemons" 
-                    className="w-full h-full object-cover object-[20%_80%] xs:object-[20%_65%] md:object-[20%_100%] lg:object-[20%_30%] 2xl:object-[40%_30%] rounded-t-4xl lg:rounded-4xl"
+                    className="px-20 xxs:px-12 xs:px-36 sm:px-50 lg:px-96 xl:px-[39em]"
                 />
             </div>
         </div>

@@ -9,7 +9,7 @@ export default function AboutAnime() {
     }, []);
 
     return (
-        <div className="grid place-items-center flex-grow gap-10">
+        <div className="grid place-items-center flex-grow gap-5 xxs:gap-10 mt-10">
             <div>
                 <div>
                     <h1 className="text-3xl text-center font-semibold">
@@ -30,9 +30,9 @@ export default function AboutAnime() {
             </div>
             <div className="w-full">
                 <img 
-                    src={""} 
+                    src={CharizardImage} 
                     alt="Charizard" 
-                    className="w-full h-full object-cover object-[10%_0%]"
+                    className="px-10 xxs:px-0"
                 />
             </div>
         </div>

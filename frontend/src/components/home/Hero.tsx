@@ -1,6 +1,5 @@
 import { Button } from "../ui/button";
 import { IoIosArrowRoundForward } from "react-icons/io";
-import AboutApiButton  from "./AboutApi";
 import PikachuImage from "@/assets/picachu.png";
 import { useScroll } from "./ScrollContext";
 import { useEffect } from "react";
@@ -18,9 +17,9 @@ export default function Hero() {
         <div className="grid gap-1 lg:w-[100vw] max-w-[1536px]">
             <div>
                 <img 
-                    src={""} 
+                    src={PikachuImage} 
                     alt="Pikachu"
-                    className="px-14 xxs:px-10 xs:px-36 sm:px-50 lg:px-96 xl:px-[30em]"
+                    className="px-14 xxs:px-10 xs:px-36 sm:px-50 lg:px-96 xl:px-[39em]"
                 />
             </div>
             <div className="mt-3 lg:mt-0">
