@@ -75,7 +75,7 @@ export default function NavbarLoggedOut() {
           className="text-sm xxs:text-base xs:text-sm sm:text-base lg:text-lg font-semibold transition-transform duration-200 rounded-4xl"
           style={{color: "white"}}
         >
-          Scroll Up
+          Go back
         </Button>
       </div>
       <div 
