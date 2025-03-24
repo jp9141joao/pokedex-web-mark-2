@@ -5,7 +5,7 @@ import { preload } from "react-dom";
 export default function AboutApi() {
 
     useEffect(() => {
-        preload(Dragonite, { as: 'image'});
+        preload(Ivysaur, { as: 'image'});
     }, []);
     
     return (
