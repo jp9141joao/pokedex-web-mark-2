@@ -11,12 +11,12 @@ export default function AboutApi() {
     return (
         <div className="grid place-items-center items-center gap-7 sm:gap-20 lg:grid-cols-2 rounded-4xl">
             <div className="text-center">
-                <div className="px-10">
-                    <h1 className="text-3xl xxs:text-4xl sm:text-5xl font-semibold">
+                <div className="">
+                    <h1 className="title-responsive">
                         Discover the Ultimate Pokémon API
                     </h1>
                 </div>
-                <div className="mt-2 sm:mt-4 xs:px-12 sm:px-18 2xl:px-26 2xl:mt-2">
+                <div className="mt-2 sm:mt-4 px-2 xs:px-12 sm:px-18 2xl:px-26 2xl:mt-2">
                     <p className="para-responsive">
                         The <span className="text-red-500">PokeAPI</span> is an open-source 
                         RESTful API that provides detailed data about the Pokémon universe. 
