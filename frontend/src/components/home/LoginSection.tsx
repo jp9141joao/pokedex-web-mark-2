@@ -31,7 +31,7 @@ export default function LoginSection({ showDialog, setShowDialog }: { showDialog
         >
             <DialogContent  
                 onOpenAutoFocus={(e) => e.preventDefault()}  
-                className="sm:max-w-[425px]"
+                className="xs:max-w-[425px]"
             >
                 <DialogHeader>
                     <DialogTitle className="text-3xl xxs:text-4xl">

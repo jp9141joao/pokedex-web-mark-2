@@ -1,70 +1,58 @@
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState, useRef, useCallback, useLayoutEffect } from "react";
 import { useScroll } from "../home/ScrollContext";
 import { Button } from "../ui/button";
 import LoginSection from "../home/LoginSection";
 
-
 export default function NavbarLoggedOut() {
-
   const { scroll, setScroll } = useScroll();
-  const [ showDialog, setShowDialog ] = useState<boolean>(false);
-  const [ maxTranslate, setMaxTranslate ] = useState<number>(0);
+  const [showDialog, setShowDialog] = useState<boolean>(false);
   const navRef = useRef<HTMLElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
-  
 
   useEffect(() => {
+
     const token = localStorage.getItem("authToken");
 
-    if (token) {
-      localStorage.removeItem("authToken");
-    }
+    if (token) localStorage.removeItem("authToken");
 
   }, []);
 
   const updateTranslate = useCallback(() => {
 
     if (navRef.current && buttonRef.current) {
-      setMaxTranslate(navRef.current.clientWidth - buttonRef.current.clientWidth);
+
+      const newMaxTranslate = navRef.current.clientWidth - buttonRef.current.clientWidth;
+    
+      document.documentElement.style.setProperty('--max-translate', `${newMaxTranslate}px`);
+
     }
   }, []);
 
-  useEffect(() => {
-
+  useLayoutEffect(() => {
     updateTranslate();
+    let resizeObserver: ResizeObserver | undefined;
 
     if (typeof ResizeObserver !== "undefined") {
-      const resizeObserver = new ResizeObserver(() => updateTranslate());
-
-      if (navRef.current) {
-        resizeObserver.observe(navRef.current);
-      }
-
-      if (buttonRef.current) {
-        resizeObserver.observe(buttonRef.current);
-      };
-
-      return () => resizeObserver.disconnect();
-
+      resizeObserver = new ResizeObserver(updateTranslate);
+      if (navRef.current) resizeObserver.observe(navRef.current);
+      if (buttonRef.current) resizeObserver.observe(buttonRef.current);
     } else {
       window.addEventListener("resize", updateTranslate);
-      return () => window.removeEventListener("resize", updateTranslate);
     }
 
+    return () => {
+      resizeObserver?.disconnect();
+      window.removeEventListener("resize", updateTranslate);
+    };
   }, [updateTranslate]);
 
   const handleButtonClick = () => {
-
-    if (scroll == "Right") {
-      setScroll("Left");
-    } else {
-      setShowDialog(true);
-    }
+    scroll === "Right" ? setScroll("Left") : setShowDialog(true);
   };
 
   return (
     <nav ref={navRef} className="max-w-[1536px] w-full h-[40px] relative flex justify-between overflow-hidden">
-       <div
+      <div
         className={`
           absolute transition-all duration-400 transform z-10
           ${ scroll == "Bottom" ? "translate-y-0 opacity-100" : "-translate-y-[100vh] opacity-0" }
@@ -94,31 +82,26 @@ export default function NavbarLoggedOut() {
       </div>
       <div
         ref={buttonRef}
-        className="right-0 transition-all duration-400 transform absolute top-0 z-50"
+        className="right-0 transition-all duration-300 ease-in-out transform absolute top-0 z-50"
         style={{
-          transform: 
-            scroll == "Right" ? `translateX(-${maxTranslate}px)` :
-            scroll == "Bottom" ? 'translateY(-100vh)' : 
-            "translateX(0)",
-          opacity: scroll == "Bottom" ? "0" : "100",
-          transition: "transform 0.3s ease, opacity 0.3s ease",
-          willChange: "transform, opacity"
+          transform:
+            scroll === "Right" 
+              ? "translateX(calc(-1 * var(--max-translate)))" 
+              : scroll === "Bottom" 
+              ? "translateY(-100vh)" 
+              : "translateX(0)",
+          opacity: scroll === "Bottom" ? "0" : "100",
         }}
-        
       >
         <Button
           onClick={handleButtonClick}
           className="text-sm xxs:text-base xs:text-sm sm:text-base lg:text-lg font-semibold transition-transform duration-200 rounded-4xl"
-          style={{color: "white"}}
+          style={{ color: "white" }}
         >
-          { scroll == "Right" ? "Go back" : "Log In" }
+          {scroll === "Right" ? "Go back" : "Log In"}
         </Button>
-        <LoginSection 
-          showDialog={showDialog} 
-          setShowDialog={setShowDialog}
-        />
+        <LoginSection showDialog={showDialog} setShowDialog={setShowDialog} />
       </div>
-     
     </nav>
   );
 }

@@ -12,15 +12,15 @@
 }
 
 .title-responsive {
-  @apply text-2xl xxs:text-3xl xs:text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-semibold
+  @apply text-[8vw] xs:text-4xl sm:text-5xl lg:text-5xl 2xl:text-6xl font-semibold leading-9 xxs:leading-10 xs:leading-tight
 }
 
 .para-responsive {
-  @apply text-lg xxs:text-xl xs:text-lg sm:text-xl 2xl:text-2xl
+  @apply text-lg xxs:text-xl xs:text-lg sm:text-2xl 2xl:text-3xl
 }
 
 .text-button-responsive {
-  @apply text-sm xxs:text-base xs:text-sm sm:text-base lg:text-lg 2xl:text-xl font-semibold
+  @apply text-sm xxs:text-base xs:text-sm sm:text-lg lg:text-xl 2xl:text-2xl font-semibold
 }
 
 :root {

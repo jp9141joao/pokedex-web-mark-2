@@ -9,14 +9,14 @@ export default function AboutAnime() {
     }, []);
 
     return (
-        <div className="grid place-items-center flex-grow gap-5 xxs:gap-10 mt-10">
+        <div className="grid place-items-center flex-grow gap-5 xxs:gap-10 xs:gap-5 mt-10">
             <div>
                 <div>
                     <h1 className="text-3xl text-center font-semibold">
                         The World of Pokémon
                     </h1>
                 </div>
-                <div className="grid gap-3 text-base text-center mt-2">
+                <div className="grid xs:px-16 text-base text-center mt-2">
                     <p>
                         Pokemon is a world where creatures and humans share endless adventures. 
                         Launched in 1996 by Satoshi Tajiri and Ken Sugimori, its idea of capturing 
@@ -32,7 +32,7 @@ export default function AboutAnime() {
                 <img 
                     src={CharizardImage} 
                     alt="Charizard" 
-                    className="px-10 xxs:px-0"
+                    className="px-10 xxs:px-0 xs:px-24"
                 />
             </div>
         </div>

@@ -26,7 +26,7 @@ export default function Content() {
                 </div>
                 <div
                     className={`
-                        w-full overflow-auto transition-all duration-400 absolute
+                        w-full transition-all duration-400 absolute
                         ${ scroll == "Right" ? "translate-x-0 opacity-100" : "translate-x-full opacity-0" }
                     `}
                 >
