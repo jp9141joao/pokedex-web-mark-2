@@ -1,6 +1,6 @@
 import { Button } from "../ui/button";
 import { IoIosArrowRoundForward } from "react-icons/io";
-import PikachuImage from "@/assets/picachu.png";
+import Pikachu from "@/assets/picachu.png";
 import { useScroll } from "./ScrollContext";
 import { useEffect } from "react";
 import { preload } from "react-dom";
@@ -10,20 +10,20 @@ export default function Hero() {
     const { setScroll } = useScroll();
 
     useEffect(() => {
-        preload(PikachuImage, { as: 'image'});
+        preload(Pikachu, { as: 'image'});
     }, []);
 
     return (
         <div className="grid gap-1 lg:w-[100vw] max-w-[1536px]">
             <div>
                 <img 
-                    src={PikachuImage} 
+                    src={""} 
                     alt="Pikachu"
                     className="px-14 xxs:px-10 xs:px-36 sm:px-50 lg:px-96 xl:px-[39em]"
                 />
             </div>
             <div className="mt-3 lg:mt-0">
-                <h1 className="title-responsive text-center font-semibold px-8 xxs:px-0 sm:px-6 md:px-22">
+                <h1 className="title-responsive text-center font-semibold">
                     Explore the Pokémon Universe!
                 </h1>
             </div>

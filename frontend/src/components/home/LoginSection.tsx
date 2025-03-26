@@ -34,7 +34,7 @@ export default function LoginSection({ showDialog, setShowDialog }: { showDialog
                 className="xs:max-w-[425px]"
             >
                 <DialogHeader>
-                    <DialogTitle className="text-3xl xxs:text-4xl">
+                    <DialogTitle className="text-center text-3xl xxs:text-4xl">
                         { 
                             formType == "SignIn" ? " Sign In" : 
                             formType == "SignUp" ? "Sign Up" :

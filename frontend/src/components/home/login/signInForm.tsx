@@ -58,11 +58,11 @@ export default function SignInForm(
                 </div>
             </div>
             <div className="flex justify-center items-center gap-3">
-                <Separator className="bg-black max-w-[20vw]" />
+                <Separator className="bg-black max-w-[20vw] sm:max-w-[15vw] lg:max-w-[9vw] xl:max-w-[130px]" />
                 <p className="text-sm xxs:text-base">
                     OR
                 </p>
-                <Separator className="bg-black max-w-[20vw]" />
+                <Separator className="bg-black max-w-[20vw] sm:max-w-[15vw] lg:max-w-[9vw] xl:max-w-[130px]" />
             </div>
             <div>
                 <Button
