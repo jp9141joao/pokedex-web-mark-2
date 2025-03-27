@@ -9,7 +9,7 @@ export default function AboutAnime() {
     }, []);
 
     return (
-        <div className="grid place-items-center lg:grid-cols-2 flex-grow gap-3 xxs:gap-3 xs:gap-5 mt-4">
+        <div className="grid place-items-center lg:grid-cols-2 flex-grow gap-7 xs:gap-5 mt-4">
             <div className="hidden lg:block">
                 <img
                     src={Charizard} 

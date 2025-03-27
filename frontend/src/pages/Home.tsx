@@ -24,7 +24,7 @@ export default function Home() {
             className="
                 flex flex-col lg:items-center
                 min-w-[340px] min-h-[620px] xxs:min-h-[720px]
-                h-[calc(var(--vh,1vh)*99)] sm:h-[calc(var(--vh,1vh)*95)] lg:h-[calc(var(--vh,1vh)*94)] xl:h-[calc(var(--vh,1vh)*95)]
+                h-[calc(var(--vh,1vh)*100)] sm:h-[calc(var(--vh,1vh)*95)] lg:h-[calc(var(--vh,1vh)*94)] xl:h-[calc(var(--vh,1vh)*95)]
                 py-[0.8em] sm:py-[1.1em]
                 overflow-hidden
             "
