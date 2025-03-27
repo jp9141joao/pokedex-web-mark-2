@@ -20,7 +20,7 @@
 }
 
 .text-button-responsive {
-  @apply text-sm xxs:text-base xs:text-sm sm:text-lg lg:text-xl 2xl:text-2xl font-semibold
+  @apply text-sm xxs:text-base xs:text-sm sm:text-lg lg:text-lg 2xl:text-xl font-semibold
 }
 
 :root {
