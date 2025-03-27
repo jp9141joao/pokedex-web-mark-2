@@ -16,7 +16,7 @@ export default function AboutApi() {
                         Discover the Ultimate Pokémon API
                     </h1>
                 </div>
-                <div className="mt-2 sm:mt-4 lg:mt-2 px-[3vw] xs:px-10 sm:px-10 lg:px-0 xl:px-8 2xl:mt-2">
+                <div className="px-6 mt-1 sm:mt-4 lg:mt-2 2xl:mt-2 px-3 xs:px-10 sm:px-10 lg:px-0  xl:px-8">
                     <p className="para-responsive">
                         The <span className="text-red-500">PokeAPI</span> is an open-source 
                         RESTful API that provides detailed data about the Pokémon universe. 
@@ -30,7 +30,7 @@ export default function AboutApi() {
                 <img 
                     src={Ivysaur} 
                     alt="Ivysaur" 
-                    className="px-16 xxs:px-12 xs:px-28 sm:px-50 lg:px-0 2xl:px-10"
+                    className="px-18 xxs:px-16 xs:px-28 sm:px-50 lg:px-0 2xl:px-10"
                 />
             </div>
         </div>

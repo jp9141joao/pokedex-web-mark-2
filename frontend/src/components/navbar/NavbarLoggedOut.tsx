@@ -54,10 +54,10 @@ export default function NavbarLoggedOut() {
     <nav ref={navRef} className="max-w-[1536px] w-full h-[40px] relative flex justify-between overflow-hidden">
       <div
         className={`
-          absolute transition-all duration-400 transform z-10
+          ml-[1.3em] sm:ml-[1.8em] absolute transition-all duration-400 transform z-10 
           ${ scroll == "Bottom" ? "translate-y-0 opacity-100" : "-translate-y-[100vh] opacity-0" }
         `}
-      >
+      >                
         <Button
           onClick={() => setScroll("Left")}
           className="text-sm xxs:text-base xs:text-sm sm:text-base lg:text-lg font-semibold transition-transform duration-200 rounded-4xl"
@@ -68,7 +68,7 @@ export default function NavbarLoggedOut() {
       </div>
       <div 
         className={`
-          transition-all duration-400 transform
+          ml-[1.3em] sm:ml-[1.8em] transition-all duration-400 transform
           ${ 
             scroll == "Right" ? "-translate-x-full opacity-0" : 
             scroll == "Bottom" ? "-translate-y-[100vh] opacity-0" :
@@ -95,7 +95,7 @@ export default function NavbarLoggedOut() {
       >
         <Button
           onClick={handleButtonClick}
-          className="text-sm xxs:text-base xs:text-sm sm:text-base lg:text-lg font-semibold transition-transform duration-200 rounded-4xl"
+          className="mx-[1.3em] sm:mx-[1.8em] text-sm xxs:text-base xs:text-sm sm:text-base lg:text-lg font-semibold transition-transform duration-200 rounded-4xl"
           style={{ color: "white" }}
         >
           {scroll === "Right" ? "Go back" : "Log In"}

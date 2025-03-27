@@ -27,8 +27,8 @@ export default function Hero() {
                     Explore the Pokémon Universe!
                 </h1>
             </div>
-            <div>
-                <p className="para-responsive text-center text-gray-800 px-6 xxs:px-8 xs:px-26 sm:px-32 md:px-0 sm:mt-1 lg:mt-1 ">
+            <div className="px-[16vw] xxs:px-8 xs:px-26 sm:px-32 md:px-0 sm:mt-1 lg:mt-1 ">
+                <p className="para-responsive text-center text-gray-800">
                     Find Pokémon stats and abilities with <span className="text-red-400 font-semibold">
                                                             PokeAPI.
                                                           </span>
