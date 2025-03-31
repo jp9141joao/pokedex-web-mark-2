@@ -19,7 +19,7 @@ export default function Hero() {
                 <img 
                     src={Pikachu} 
                     alt="Pikachu"
-                    className="px-[20vw] xs:px-36 sm:px-50 lg:px-96 xl:px-118 2xl:px-160"
+                    className="px-[20vw] xs:px-[32vw] lg:px-96 xl:px-118 2xl:px-160"
                 />
             </div>
             <div className="mt-3 lg:mt-0">
@@ -27,7 +27,7 @@ export default function Hero() {
                     Explore the Pokémon Universe!
                 </h1>
             </div>
-            <div className="px-[16vw] xxs:px-[14vw] xs:px-32 sm:px-42 md:px-0 sm:mt-1 lg:mt-1 ">
+            <div className="px-[16vw] xxs:px-[14vw] xs:px-[24vw] sm:px-[26vw] md:px-0 sm:mt-1 lg:mt-1 ">
                 <p className="para-responsive text-center text-gray-800">
                     Find Pokémon stats and abilities with <span className="text-red-400 font-semibold">
                                                             PokeAPI.
