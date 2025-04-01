@@ -19,7 +19,7 @@ export default function Hero() {
                 <img 
                     src={Pikachu} 
                     alt="Pikachu"
-                    className="px-[20vw] xs:px-[32vw] lg:px-96 xl:px-118 2xl:px-160"
+                    className="px-[20vw] xs:px-[32vw] lg:px-[38vw] 2xl:px-[42vw]"
                 />
             </div>
             <div className="mt-3 lg:mt-0">

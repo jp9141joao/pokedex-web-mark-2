@@ -9,14 +9,14 @@ export default function AboutApi() {
     }, []);
     
     return (
-        <div className="grid place-items-center items-center gap-[3vh] xxs:gap-[4vh] sm:gap-8 lg:grid-cols-2 rounded-4xl lg:px-20 2xl:px-40">
+        <div className="grid place-items-center items-center gap-[3vh] xxs:gap-[4vh] lg:gap-0 lg:grid-cols-2 rounded-4xl lg:px-[8vw] 2xl:px-[10.5vw]">
             <div className="text-center">
                 <div className="">
                     <h1 className="title-responsive">
                         Discover the Ultimate Pokémon API
                     </h1>
                 </div>
-                <div className="px-[6vw] xs:px-[14vw] sm:px-[12vw] lg:px-0 xl:px-8 mt-1 lg:mt-2 2xl:mt-2">
+                <div className="px-[6vw] xs:px-[14vw] sm:px-[12vw] lg:px-0 xl:px-[3vw] mt-1 lg:mt-2 2xl:mt-2">
                     <p className="para-responsive">
                         The <span className="text-red-500">PokeAPI</span> is an open-source 
                         RESTful API that provides detailed data about the Pokémon universe. 
@@ -30,7 +30,7 @@ export default function AboutApi() {
                 <img 
                     src={Ivysaur} 
                     alt="Ivysaur" 
-                    className="px-[20vw] xs:px-[22vw] sm:px-[26vw] lg:px-0 2xl:px-10"
+                    className="px-[20vw] xs:px-[22vw] sm:px-[26vw] md:px-[20vw] lg:px-[4vw]"
                 />
             </div>
         </div>

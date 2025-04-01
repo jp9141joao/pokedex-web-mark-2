@@ -9,21 +9,21 @@ export default function AboutAnime() {
     }, []);
 
     return (
-        <div className="grid place-items-center lg:grid-cols-2 flex-grow gap-[4vh] xs:gap-5 sm:gap-8 mt-4">
+        <div className="grid place-items-center lg:grid-cols-2 flex-grow gap-[4vh] lg:gap-0 mt-4 lg:px-[4vw] xl:px-[6vw]">
             <div className="hidden lg:block">
                 <img
                     src={Charizard} 
                     alt="Charizard" 
-                    className="px-10 2xl:px-24"
+                    className="px-[2vw] 2xl:px-[4vw]"
                 />
             </div>
-            <div>
+            <div className="">
                 <div>
-                    <h1 className="px-[10vw] lg:px-16 title-responsive text-center font-semibold">
+                    <h1 className="px-[10vw] lg:px-[6vw] xl:px-[3vw] title-responsive text-center font-semibold">
                         The Amazing World of Pokémon
                     </h1>
                 </div>
-                <div className="grid px-[6vw] xxs:px-[8vw] xs:px-[12vw] sm:px-[14vw] lg:px-12 xl:px-20 2xl:px-22 text-base text-center mt-1 lg:mt-2 2xl:mt-2">
+                <div className="grid px-[6vw] xxs:px-[8vw] xs:px-[12vw] sm:px-[14vw] lg:px-[4vw] xl:px-[3.5vw] 2xl:px-[4.5vw] text-base text-center mt-1 lg:mt-2 2xl:mt-2">
                     <p className="para-responsive">
                         Pokemon is a world of adventures where creatures and humans connect. 
                         Launched in 1996, its concept of capturing and battling monsters turned 
@@ -36,7 +36,7 @@ export default function AboutAnime() {
                 <img
                     src={Charizard} 
                     alt="Charizard" 
-                    className="px-[16vw] xxs:px-[12vw] xs:px-[16vw] sm:px-[24vw] lg:px-0"
+                    className="px-[16vw] xxs:px-[12vw] xs:px-[16vw] sm:px-[24vw] md:px-[16vw] lg:px-0"
                 />
             </div>
         </div>

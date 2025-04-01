@@ -24,6 +24,7 @@ export default function Home() {
             className="
                 flex flex-col lg:items-center
                 min-w-[340px] min-h-[620px] xxs:min-h-[720px] xs:min-h-[610px] sm:min-h-[710px] md:min-h-[910px]
+                lg:min-h-[550px] xl:min-h-[650px]
                 h-[calc(var(--vh,1vh)*100)] 
                 py-[0.8em] sm:py-[1.1em]
                 overflow-hidden
