@@ -12,11 +12,11 @@
 }
 
 .title-responsive {
-  @apply text-[8.5vw] xxs:text-[8vw] xs:text-[5vw] sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:px-[] font-semibold leading-9 xxs:leading-10 xs:leading-tight
+  @apply text-[8.5vw] xxs:text-[8vw] xs:text-[5vw] sm:text-[4.65vw] md:text-[4.75vw] lg:text-[3.6vw] xl:text-[3.8vw] 2xl:text-5xl font-semibold leading-9 xxs:leading-10 xs:leading-tight
 }
 
 .para-responsive {
-  @apply text-[4.65vw] xxs:text-[4.5vw] xs:text-[3.25vw] sm:text-xl md:text-2xl lg:text-xl xl:text-2xl 
+  @apply text-[4.65vw] xxs:text-[4.5vw] xs:text-[3.25vw] sm:text-[3.1vw] lg:text-[2vw] xl:text-[1.9vw] 2xl:text-2xl
 }
 
 .text-button-responsive {

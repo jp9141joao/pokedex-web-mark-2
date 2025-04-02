@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Sidebar } from "../sidebar";
 import { HiMenuAlt1, HiMenuAlt3 } from "react-icons/hi";
+import { Sidebar } from "../Sidebar";
 
 
 export default function NavbarLoggedIn() {
