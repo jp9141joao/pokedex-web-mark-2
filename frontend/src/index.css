@@ -12,7 +12,7 @@
 }
 
 .title-responsive {
-  @apply text-[8.5vw] xxs:text-[8vw] xs:text-[5vw] sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-semibold leading-9 xxs:leading-10 xs:leading-tight
+  @apply text-[8.5vw] xxs:text-[8vw] xs:text-[5vw] sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:px-[] font-semibold leading-9 xxs:leading-10 xs:leading-tight
 }
 
 .para-responsive {
@@ -21,6 +21,10 @@
 
 .text-button-responsive {
   @apply text-sm xxs:text-base xs:text-sm sm:text-lg lg:text-lg 2xl:text-xl font-semibold
+}
+
+.icon-responsive {
+  @apply size-6
 }
 
 :root {

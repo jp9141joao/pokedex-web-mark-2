@@ -3,6 +3,7 @@ import IconGoogle from "@/assets/icons8-google-logo-48.png";
 import { Separator } from "@/components/ui/separator";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { useNavigate } from "react-router-dom";
 
 export default function SignInForm(
     { setFormType, setFullName, email, setEmail, password, setPassword }: 
@@ -13,6 +14,8 @@ export default function SignInForm(
         password: string, setPassword: (value: string) => void,
     }
 ) {
+
+    const navigate = useNavigate();
 
     return (
         <div className="grid gap-5">
@@ -52,6 +55,7 @@ export default function SignInForm(
                     </p>
                     <Button 
                         className="w-full text-sm xxs:text-base rounded-4xl mt-3"
+                        onClick={() => navigate("/overview")}
                     >
                         Access Account
                     </Button>
@@ -68,6 +72,7 @@ export default function SignInForm(
                 <Button
                     variant={"outline"}
                     className="w-full flex grid-2 items-center rounded-4xl border-black"
+                    onClick={() => navigate("/overview")}
                 >
                     <img 
                         src={IconGoogle} 
