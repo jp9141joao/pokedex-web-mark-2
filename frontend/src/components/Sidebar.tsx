@@ -6,30 +6,13 @@ import {
   SheetTrigger,
 } from "./ui/sheet"
 import { HiMenuAlt1, HiMenuAlt3 } from "react-icons/hi";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from "./ui/button";
 
-export const Sidebar = () => {
+export const Sidebar = ({ items }: { items: { name: string, href: string }[] }) => {
     
+    const { pathname } = useLocation();
     const [ showSheet, setShowSheet ] = useState<boolean>(false);
-    const items = [
-        {
-            name: 'Overview',
-            href: '/overview'
-        },
-        {
-            name: 'Pokemon Details',
-            href: '/pokemon-details'
-        },
-        {
-            name: 'Compare Pokemons',
-            href: '/trips'
-        },
-        {
-            name: 'My Pokemon List',
-            href: '/my-pokemon-list'
-        },
-    ]
 
     useEffect(() => {
         function handleResize() {
@@ -46,6 +29,7 @@ export const Sidebar = () => {
         return () => {
             window.removeEventListener("resize", handleResize);
         };
+
       }, []);
 
     return (
@@ -68,9 +52,9 @@ export const Sidebar = () => {
                     <HiMenuAlt3 className="icon-responsive"/>
                 }
             </SheetTrigger>
-            <SheetContent side="left">
-                <div className="w-full grid gap-5 place-items-start mx-[6vw]"  style={{border: '1px solid red'}}>
-                    <div className="mt-[12vw]">
+            <SheetContent side="left" className="rounded-r-2xl">
+                <div className="w-full grid gap-5 px-[6vw]">
+                    <div className="mt-[6vh]">
                         <h1 className="title-responsive">
                             PokeWiki
                         </h1>
@@ -81,7 +65,10 @@ export const Sidebar = () => {
                                 <Link
                                     key={ item.name }
                                     to={ item.href }
-                                    className="para-responsive"
+                                    className={`
+                                        para-responsive
+                                        ${ item.href == pathname ? 'underline' : null }
+                                    `}
                                 >
                                     { item.name }
                                 </Link>
@@ -89,7 +76,7 @@ export const Sidebar = () => {
                         }
                     </div>
                     <div>
-                    <div className="w-full mt-3" style={{border: '1px solid red'}}>
+                    <div className="w-full mt-2">
                         <Button className="w-full">
                             Settings
                         </Button>
