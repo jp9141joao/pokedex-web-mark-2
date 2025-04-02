@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { HiMenuAlt1, HiMenuAlt3 } from "react-icons/hi";
 import { Sidebar } from "../Sidebar";
 
 

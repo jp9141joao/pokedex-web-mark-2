@@ -8,7 +8,6 @@ import {
 import { HiMenuAlt1, HiMenuAlt3 } from "react-icons/hi";
 import { Link } from 'react-router-dom';
 import { Button } from "./ui/button";
-import Credits from "./Credits";
 
 export const Sidebar = () => {
     
