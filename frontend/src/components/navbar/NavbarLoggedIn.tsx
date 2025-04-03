@@ -39,7 +39,7 @@ export default function NavbarLoggedIn() {
                 <img 
                     src={Pokeball} 
                     alt="pokeball"
-                    className="min-w-[60vw] overflow-hidden -rotate-10 opacity-8 z-0"
+                    className="min-w-[60vw] overflow-hidden  opacity-8 z-0"
                     style={{
                         WebkitMask: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0) 100%)",
                         mask: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0) 100%)"
