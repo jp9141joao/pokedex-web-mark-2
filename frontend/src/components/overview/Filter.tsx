@@ -6,7 +6,7 @@ import {
     DropdownMenuLabel,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MdOutlineMoreHoriz, MdOutlineCheck, MdKeyboardArrowDown } from "react-icons/md";
   
 export default function Filter() {
@@ -16,16 +16,20 @@ export default function Filter() {
     const [ isOpen, setIsOpen ] = useState<boolean>(false);
     const filters: string[] = ['Id', 'Name', 'Type', 'Height', 'Width', 'HP', 'ATK', 'DEF', 'SP. ATK', 'SP. DEF', 'SPD'];
 
+    useEffect(() => {
+        if (filterBy === null) {
+            setFilterValue('')
+        }
+    }, [filterBy]);
+
     return (
-        <div className="mt-10">
+        <div className="">
             <div className="flex gap-2">
                 <Input
                     value={filterValue}
                     onChange={(e) => {
                         if (filterBy !== null) {
                             setFilterValue(e.target.value);
-                        } else {
-                            setFilterValue('');
                         }
                     }}
                     onClick={() => {
@@ -34,6 +38,7 @@ export default function Filter() {
                         }
                     }}
                     placeholder={filterBy === null ? "Select a filter" : `Search for Pokemon`}
+                    className="bg-transparent"
                 />  
                 <DropdownMenu
                     open={isOpen}

@@ -3,7 +3,7 @@ import Filter from "@/components/overview/Filter"
 export default function Content() {
     
     return (
-        <div>
+        <div className="">
             <Filter />
         </div>
     )

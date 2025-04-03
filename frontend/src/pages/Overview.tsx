@@ -1,14 +1,16 @@
 import NavbarLoggedIn from "@/components/navbar/NavbarLoggedIn";
 import Content from "@/components/overview/Content";
+import PokemonList from "@/components/overview/PokemonsList";
 
 export default function Overview() {
 
     return (
         <div
-            className="mx-[1.3em] sm:mx-[1.8em] py-[0.8em]"
+            className="px-[1.3em] sm:px-[1.8em] "
         >
             <NavbarLoggedIn />
             <Content/>
+            <PokemonList />
         </div>
     );
 }
