@@ -145,10 +145,10 @@ export default function PokemonList() {
     }, []);
 
     return (
-        <div className="grid gap-6" style={{border: "1px solid red"}}>
+        <div className="grid gap-6">
             {
-                pokemons.map((item: pokemon) => (  
-                    <div className="relative grid place-items-end h-44">
+                pokemons.map((item: pokemon, i: number) => (  
+                    <div className={`relative grid place-items-end h-44`}>
                         <div>
                             <img 
                                 src={item.img} 

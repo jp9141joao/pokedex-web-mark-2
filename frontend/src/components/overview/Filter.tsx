@@ -38,7 +38,7 @@ export default function Filter() {
                         }
                     }}
                     placeholder={filterBy === null ? "Select a filter" : `Search for Pokemon`}
-                    className="bg-transparent"
+                    className="bg-transparent border-2"
                 />  
                 <DropdownMenu
                     open={isOpen}
