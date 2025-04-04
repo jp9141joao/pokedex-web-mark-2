@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react"
+
 import Pokeball from "@/assets/pokeball.svg";
+
+import Pattern from "@/assets/10x5.svg";
 
 import BugIcon from "@/assets/types/bug.svg";
 import DarkIcon from "@/assets/types/dark.svg";
@@ -103,7 +106,7 @@ export default function PokemonList() {
         try {
 
             const response = await fetch(
-                `https://pokeapi.co/api/v2/pokemon/?offset=${passedPokemonCount}&limit=1`
+                `https://pokeapi.co/api/v2/pokemon/?offset=${passedPokemonCount}&limit=20`
             );
 
             const data = await response.json();
@@ -142,35 +145,43 @@ export default function PokemonList() {
     }, []);
 
     return (
-        <div className="mt-4 grid gap-16">
+        <div className="grid gap-6" style={{border: "1px solid red"}}>
             {
                 pokemons.map((item: pokemon) => (  
-                    <div className="relative grid place-items-end h-44" style={{border: '1px solid red'}}>
+                    <div className="relative grid place-items-end h-44">
                         <div>
                             <img 
-                                src={"item.img"} 
+                                src={item.img} 
                                 alt={item.name}
-                                className="absolute top-0 right-0 -translate-y-12 translate-x-4 w-50 z-50"
+                                className="absolute top-0 right-0 -translate-y-12 translate-x-4 w-50 z-30"
                             />
                         </div>
+                        
                         <div 
                             key={item.id}
-                            className={`relative h-36 w-full rounded-4xl px-6 py-4`} 
+                            className={`grid relative h-36 w-full rounded-4xl px-6 py-4 overflow-hidden z-20`} 
                             style={{backgroundColor: getTypeColor(item.type[0], "dark")}}
                         >
-                            <div>
-                                <h1 className="text-4xl text-white/50">
+                           <div className="absolute grid place-items-center -translate-y-6 top-0 z-1">
+                                <img 
+                                    src={Pattern} 
+                                    alt="Pattern"
+                                    className="w-50 z-10 opacity-14"
+                                />
+                            </div>
+                            <div className="relative z-20 ">
+                                <h1 className="text-4xl text-white">
                                     <strong>
                                         #{getIdFormatted(item.id)}
                                     </strong>
                                 </h1>
                             </div>
-                            <div>
+                            <div className="relative z-20">
                                 <h1 className="text-xl text-white font-semibold">
                                     {item.name.toUpperCase()} 
                                 </h1>
                             </div>
-                            <div className="flex gap-2">
+                            <div className="flex gap-2 mt-2">
                             {
                                 item.type.map((type: string) => (
                                     <div 
@@ -206,7 +217,7 @@ export default function PokemonList() {
                             }
                             </div>
                            
-                            <div className="h-36 overflow-hidden absolute right-0 top-0  opacity-8">
+                            <div className="h-36 overflow-hidden absolute right-0 top-0 opacity-8">
                                 <img 
                                     src={Pokeball} 
                                     alt="Pokeball"
@@ -220,3 +231,4 @@ export default function PokemonList() {
         </div>
     )
 }
+

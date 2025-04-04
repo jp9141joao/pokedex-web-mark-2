@@ -23,7 +23,7 @@ export default function Filter() {
     }, [filterBy]);
 
     return (
-        <div className="">
+        <div className="relative z-50">
             <div className="flex gap-2">
                 <Input
                     value={filterValue}
