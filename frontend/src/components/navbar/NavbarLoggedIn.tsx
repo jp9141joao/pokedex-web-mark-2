@@ -26,7 +26,7 @@ export default function NavbarLoggedIn() {
         <nav className="relative flex justify-between items-start py-[0.8em] h-20 overflow-hidden">
             <div>
                 <h1 className="text-xl xxs:text-2xl font-semibold">
-                    Hello, Johnn! 👋
+                    Hello, User! 👋
                 </h1>
             </div>
             <div className="hidden lg:inline-block">

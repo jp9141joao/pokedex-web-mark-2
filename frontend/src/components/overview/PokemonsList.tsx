@@ -39,10 +39,10 @@ interface pokemon {
 }
   
 
-export default function PokemonList() {
-
+export default function PokemonList(
+    { passedPokemonCount, setCanNavigate }: { passedPokemonCount: number, setCanNavigate: (value: { previous: boolean, next: boolean }) => void }
+) {
     const [ pokemons, setPokemons ] = useState<pokemon[]>([]);
-    const [passedPokemonCount, setPassedPokemonCount ] = useState<number>(0);
     const typeColors: { [key: string]: string } = {
         normal: '#A8A77A',
         fire: '#EE8130',
@@ -111,6 +111,11 @@ export default function PokemonList() {
 
             const data = await response.json();
 
+            setCanNavigate({
+                previous: data.previous != null ? true : false,
+                next: data.next != null ? true : false,
+            });
+
             const pokemonPromises = data.results.map((item: any) => {
                 return fetch(item.url).then(res => res.json());
             });
@@ -131,14 +136,15 @@ export default function PokemonList() {
                 img: pokemon.sprites.other.home.front_default
             }));
 
-            setPassedPokemonCount(passedPokemonCount + 20);
             setPokemons(formattedPokemons);
-
         } catch (error: any) {
             console.error(error);
         }
     };
 
+    useEffect(() => {
+        loadPokemons();
+    }, [passedPokemonCount])
 
     useEffect(() => {
         loadPokemons();
@@ -149,6 +155,7 @@ export default function PokemonList() {
             {
                 pokemons.map((item: pokemon) => (  
                     <div className={`relative grid place-items-end h-44`}>
+                        { passedPokemonCount }fdvd
                         <div>
                             <img 
                                 src={item.img} 
