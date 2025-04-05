@@ -1,14 +1,15 @@
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";  
 
 export default function Navigation(
-  { canNavigate, passedPokemonCount, setPassedPokemonCount }: 
-  { canNavigate: { previous: boolean, next: boolean }, passedPokemonCount: number, setPassedPokemonCount: (value: number) => void }
+  { canNavigate, passedPokemonCount, setIsLoading, setPassedPokemonCount }: 
+  { canNavigate: { previous: boolean, next: boolean }, passedPokemonCount: number, setIsLoading: (value: boolean) => void, setPassedPokemonCount: (value: number) => void }
 ) {
 
     return (
       <div className="w-full flex justify-between mt-8 mb-2">
         <div
           onClick={() => {
+            setIsLoading(true);
             canNavigate.previous ? setPassedPokemonCount(passedPokemonCount - 20) : null;
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
@@ -21,11 +22,12 @@ export default function Navigation(
         </div>
         <div>
           <p className="font-semibold">
-            Page { passedPokemonCount }
+            Page { passedPokemonCount / 20 }
           </p>
         </div>
         <div
           onClick={() => {
+            setIsLoading(true);
             canNavigate.next ? setPassedPokemonCount(passedPokemonCount + 20) : null;
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}

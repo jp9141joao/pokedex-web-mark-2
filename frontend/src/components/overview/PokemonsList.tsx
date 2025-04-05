@@ -22,6 +22,7 @@ import PsychicIcon from "@/assets/types/psychic.svg";
 import RockIcon from "@/assets/types/rock.svg";
 import SteelIcon from "@/assets/types/steel.svg";
 import WaterIcon from "@/assets/types/water.svg";
+import { Spinner } from "../ui/spinner";
 
 interface pokemon {
     id: string;
@@ -40,7 +41,8 @@ interface pokemon {
   
 
 export default function PokemonList(
-    { passedPokemonCount, setCanNavigate }: { passedPokemonCount: number, setCanNavigate: (value: { previous: boolean, next: boolean }) => void }
+    { passedPokemonCount, isLoading, setIsLoading, setCanNavigate }: 
+    { passedPokemonCount: number, isLoading: boolean, setIsLoading: (value: boolean) => void, setCanNavigate: (value: { previous: boolean, next: boolean }) => void }
 ) {
     const [ pokemons, setPokemons ] = useState<pokemon[]>([]);
     const typeColors: { [key: string]: string } = {
@@ -143,27 +145,25 @@ export default function PokemonList(
     };
 
     useEffect(() => {
-        loadPokemons();
-    }, [passedPokemonCount])
+        setIsLoading(false);
+    }, [pokemons]);
 
     useEffect(() => {
         loadPokemons();
-    }, []);
+    }, [passedPokemonCount]);
 
     return (
-        <div className="grid gap-6">
+        <div className="grid grid-col gap-6 min-h-[72vh]">
             {
                 pokemons.map((item: pokemon) => (  
                     <div className={`relative grid place-items-end h-44`}>
-                        { passedPokemonCount }fdvd
                         <div>
                             <img 
                                 src={item.img} 
                                 alt={item.name}
                                 className="absolute top-0 right-0 -translate-y-12 translate-x-4 w-50 z-30"
                             />
-                        </div>
-                        
+                        </div> 
                         <div 
                             key={item.id}
                             className={`grid relative h-36 w-full rounded-4xl px-6 py-4 overflow-hidden z-20`} 
@@ -176,61 +176,66 @@ export default function PokemonList(
                                     className="w-50 z-10 opacity-14"
                                 />
                             </div>
-                            <div className="relative z-20 ">
-                                <h1 className="text-4xl text-white">
-                                    <strong>
-                                        #{getIdFormatted(item.id)}
-                                    </strong>
-                                </h1>
-                            </div>
-                            <div className="relative z-20">
-                                <h1 className="text-xl text-white font-semibold">
-                                    {item.name.toUpperCase()} 
-                                </h1>
-                            </div>
-                            <div className="flex gap-2 mt-2">
                             {
-                                item.type.map((type: string) => (
-                                    <div 
-                                        className="grid place-items-center items-center w-11 h-11 rounded-4xl"
-                                        style={{backgroundColor: getTypeColor(type, "light")}}
-                                    >
+                                isLoading ?
+                                <Spinner size={"large"} /> :
+                                <>
+                                    <div className="relative z-20 ">
+                                        <h1 className="text-4xl text-white">
+                                            <strong>
+                                                #{getIdFormatted(item.id)}
+                                            </strong>
+                                        </h1>
+                                    </div>
+                                    <div className="relative z-20">
+                                        <h1 className="text-xl text-white font-semibold">
+                                            {item.name.toUpperCase()} 
+                                        </h1>
+                                    </div>
+                                    <div className="flex gap-2 mt-2">
+                                    {
+                                        item.type.map((type: string) => (
+                                            <div 
+                                                className="grid place-items-center items-center w-11 h-11 rounded-4xl"
+                                                style={{backgroundColor: getTypeColor(type, "light")}}
+                                            >
+                                                <img 
+                                                    src={
+                                                        type === "bug" ? BugIcon :
+                                                            type === "dark" ? DarkIcon :
+                                                            type === "dragon" ? DragonIcon :
+                                                            type === "electric" ? ElectricIcon :
+                                                            type === "fairy" ? FairyIcon :
+                                                            type === "fighting" ? FightingIcon :
+                                                            type === "fire" ? FireIcon :
+                                                            type === "flying" ? FlyingIcon :
+                                                            type === "ghost" ? GhostIcon :
+                                                            type === "grass" ? GrassIcon :
+                                                            type === "ground" ? GroundIcon :
+                                                            type === "ice" ? IceIcon :
+                                                            type === "normal" ? NormalIcon :
+                                                            type === "poison" ? PoisonIcon :
+                                                            type === "psychic" ? PsychicIcon :
+                                                            type === "rock" ? RockIcon :
+                                                            type === "steel" ? SteelIcon :
+                                                            type === "water" ? WaterIcon : ""
+                                                        } 
+                                                    alt={type}
+                                                    className="text-white fill-current" 
+                                                />
+                                            </div>
+                                        ))
+                                    }
+                                    </div>      
+                                    <div className="h-36 overflow-hidden absolute right-0 top-0 opacity-8">
                                         <img 
-                                            src={
-                                                type === "bug" ? BugIcon :
-                                                    type === "dark" ? DarkIcon :
-                                                    type === "dragon" ? DragonIcon :
-                                                    type === "electric" ? ElectricIcon :
-                                                    type === "fairy" ? FairyIcon :
-                                                    type === "fighting" ? FightingIcon :
-                                                    type === "fire" ? FireIcon :
-                                                    type === "flying" ? FlyingIcon :
-                                                    type === "ghost" ? GhostIcon :
-                                                    type === "grass" ? GrassIcon :
-                                                    type === "ground" ? GroundIcon :
-                                                    type === "ice" ? IceIcon :
-                                                    type === "normal" ? NormalIcon :
-                                                    type === "poison" ? PoisonIcon :
-                                                    type === "psychic" ? PsychicIcon :
-                                                    type === "rock" ? RockIcon :
-                                                    type === "steel" ? SteelIcon :
-                                                    type === "water" ? WaterIcon : ""
-                                                } 
-                                            alt={type}
-                                            className="text-white fill-current" 
+                                            src={Pokeball} 
+                                            alt="Pokeball"
+                                            className={`w-[46vw] -rotate-30`}
                                         />
                                     </div>
-                                ))
+                                </> 
                             }
-                            </div>
-                           
-                            <div className="h-36 overflow-hidden absolute right-0 top-0 opacity-8">
-                                <img 
-                                    src={Pokeball} 
-                                    alt="Pokeball"
-                                    className={`w-[46vw] -rotate-30`}
-                                />
-                            </div>
                         </div>
                     </div>
                 ))
