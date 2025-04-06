@@ -9,21 +9,30 @@ import {
 import { useEffect, useState } from "react";
 import { MdOutlineMoreHoriz, MdOutlineCheck, MdKeyboardArrowDown } from "react-icons/md";
   
-export default function Filter() {
-
-    const [ filterValue, setFilterValue ] = useState<string>('');
-    const [ filterBy, setFilterBy ] = useState<string | null>(null);
+export default function Filter(
+    {
+        filterValue, 
+        setFilterValue, 
+        filterBy, 
+        setFilterBy
+    }: {
+        filterValue: string,
+        setFilterValue: (value: string) => void,
+        filterBy: string | null,
+        setFilterBy: (value: string | null) => void
+    }
+) {
     const [ isOpen, setIsOpen ] = useState<boolean>(false);
-    const filters: string[] = ['Id', 'Name', 'Type', 'Height', 'Width', 'HP', 'ATK', 'DEF', 'SP. ATK', 'SP. DEF', 'SPD'];
+    const filters: string[] = ['ID', 'Name', 'Type', 'Height', 'Weight' /* , 'HP', 'ATK', 'DEF', 'SP. ATK', 'SP. DEF', 'SPD' */];
 
     useEffect(() => {
         if (filterBy === null) {
-            setFilterValue('')
+            setFilterValue('');
         }
     }, [filterBy]);
 
     return (
-        <div className="relative z-50">
+        <div className="relative z-50 bg-white">
             <div className="flex gap-2">
                 <Input
                     value={filterValue}
@@ -38,7 +47,7 @@ export default function Filter() {
                         }
                     }}
                     placeholder={filterBy === null ? "Select a filter" : `Search for Pokemon`}
-                    className="bg-transparent border-2"
+                    className="bg-transparent border-1"
                 />  
                 <DropdownMenu
                     open={isOpen}
@@ -66,7 +75,7 @@ export default function Filter() {
                             }
                         </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent className="h-[180px]" align="end">
+                    <DropdownMenuContent align="end">
                         {
                             filters.map((item: string) => (
                                 <DropdownMenuLabel 

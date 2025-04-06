@@ -6,12 +6,12 @@ import {
   SheetTrigger,
 } from "./ui/sheet"
 import { HiMenuAlt1, HiMenuAlt3 } from "react-icons/hi";
-import { Link, useLocation } from 'react-router-dom';
+//import { Link, useLocation } from 'react-router-dom';
 import { Button } from "./ui/button";
 
-export const Sidebar = ({ items }: { items: { name: string, href: string }[] }) => {
+export const Sidebar = (/*{ items }: { items: { name: string, href: string }[] }*/) => {
     
-    const { pathname } = useLocation();
+    //const { pathname } = useLocation();
     const [ showSheet, setShowSheet ] = useState<boolean>(false);
 
     useEffect(() => {
@@ -59,6 +59,7 @@ export const Sidebar = ({ items }: { items: { name: string, href: string }[] }) 
                             PokeWiki
                         </h1>
                     </div>
+                    {/*
                     <div className="grid gap-3">
                         {
                             items.map((item: any) => (
@@ -75,10 +76,11 @@ export const Sidebar = ({ items }: { items: { name: string, href: string }[] }) 
                             ))
                         }
                     </div>
+                    */}
                     <div>
                     <div className="w-full mt-2">
                         <Button className="w-full">
-                            Settings
+                            Log out
                         </Button>
                     </div>
                 </div>

@@ -23,28 +23,25 @@ import RockIcon from "@/assets/types/rock.svg";
 import SteelIcon from "@/assets/types/steel.svg";
 import WaterIcon from "@/assets/types/water.svg";
 import { Spinner } from "../ui/spinner";
-
-interface pokemon {
-    id: string;
-    name: string;
-    type: string[];
-    height: string;
-    weight: string;
-    hitpoints: string;
-    attack: string;
-    defense: string;
-    specialattack: string;
-    specialdefense: string;
-    speed: string;
-    img: string;
-}
-  
+import { Navigate, Pokemon } from "../utils/types";
 
 export default function PokemonList(
-    { passedPokemonCount, isLoading, setIsLoading, setCanNavigate }: 
-    { passedPokemonCount: number, isLoading: boolean, setIsLoading: (value: boolean) => void, setCanNavigate: (value: { previous: boolean, next: boolean }) => void }
+    { 
+        filterValue,
+        filterBy,
+        passedPokemonCount, 
+        isLoading, 
+        setIsLoading, 
+        setCanNavigate 
+    }: {
+        filterValue: string,
+        filterBy: string | null, 
+        passedPokemonCount: number, 
+        isLoading: boolean, 
+        setIsLoading: (value: boolean) => void, 
+        setCanNavigate: (value: Navigate) => void }
 ) {
-    const [ pokemons, setPokemons ] = useState<pokemon[]>([]);
+    const [ pokemons, setPokemons ] = useState<Pokemon[]>([]);
     const typeColors: { [key: string]: string } = {
         normal: '#A8A77A',
         fire: '#EE8130',
@@ -124,9 +121,10 @@ export default function PokemonList(
             const pokemonDetails = await Promise.all(pokemonPromises);
 
             const formattedPokemons = pokemonDetails.map((pokemon: any) => ({
-                id: pokemon.id,
+                id: getIdFormatted(pokemon.id),
                 name: pokemon.name,
-                type: pokemon.types.map((i: any) => i.type.name ),
+                type_1: pokemon.types[0].type.name,
+                type_2: pokemon.types[1] ? pokemon.types[1].type.name : null,
                 height: pokemon.height,
                 weight: pokemon.weight,
                 hitpoints: pokemon.stats[0].base_stat,
@@ -153,92 +151,136 @@ export default function PokemonList(
     }, [passedPokemonCount]);
 
     return (
-        <div className="grid grid-col gap-6 min-h-[72vh]">
+        <div className="flex-grow mt-1">
             {
-                pokemons.map((item: pokemon) => (  
-                    <div className={`relative grid place-items-end h-44`}>
-                        <div>
-                            <img 
-                                src={item.img} 
-                                alt={item.name}
-                                className="absolute top-0 right-0 -translate-y-12 translate-x-4 w-50 z-30"
-                            />
-                        </div> 
-                        <div 
-                            key={item.id}
-                            className={`grid relative h-36 w-full rounded-4xl px-6 py-4 overflow-hidden z-20`} 
-                            style={{backgroundColor: getTypeColor(item.type[0], "dark")}}
-                        >
-                           <div className="absolute grid place-items-center -translate-y-6 top-0 z-1">
-                                <img 
-                                    src={Pattern} 
-                                    alt="Pattern"
-                                    className="w-50 z-10 opacity-14"
-                                />
-                            </div>
-                            {
-                                isLoading ?
-                                <Spinner size={"large"} /> :
-                                <>
-                                    <div className="relative z-20 ">
-                                        <h1 className="text-4xl text-white">
-                                            <strong>
-                                                #{getIdFormatted(item.id)}
-                                            </strong>
-                                        </h1>
-                                    </div>
-                                    <div className="relative z-20">
-                                        <h1 className="text-xl text-white font-semibold">
-                                            {item.name.toUpperCase()} 
-                                        </h1>
-                                    </div>
-                                    <div className="flex gap-2 mt-2">
-                                    {
-                                        item.type.map((type: string) => (
+                pokemons.map((item: Pokemon) => {
+
+                    const key = filterBy?.toLowerCase() as keyof Pokemon;
+                    
+                    return (
+                        filterBy === null ||
+                        (
+                            filterBy !== null &&
+                            (
+                                filterBy == "Type" ? 
+                                item['type_1']?.toLowerCase().includes(filterValue.toLowerCase()) ||
+                                item['type_2']?.toLowerCase().includes(filterValue.toLowerCase()) :
+                                item[key]?.toString().toLowerCase().includes(filterValue.toLowerCase())
+                            )
+                        ) ?
+                        (
+                            <div 
+                                key={item.id}
+                                className={`grid relative h-40 w-full rounded-4xl px-6 py-4 overflow-hidden z-20 mt-5`} 
+                                style={{backgroundColor: getTypeColor(item.type_1, "dark")}}
+                            >
+                                <div className="absolute grid place-items-center -translate-y-6 top-0 z-1">
+                                    <img 
+                                        src={Pattern} 
+                                        alt="Pattern"
+                                        className="w-50 z-10 opacity-14"
+                                    />
+                                </div>
+                                {
+                                    isLoading ?
+                                    <Spinner size={"large"} /> :
+                                    <>
+                                        <div>
+                                            <img 
+                                                src={item.img} 
+                                                alt={item.name}
+                                                className="absolute top-1/2 right-0 -translate-y-1/2 -translate-x-3 w-36 z-30"
+                                            />
+                                        </div>
+                                        <div className="relative z-20 ">
+                                            <h1 className="text-4xl text-white">
+                                                <strong>
+                                                    #{getIdFormatted(item.id)}
+                                                </strong>
+                                            </h1>
+                                        </div>
+                                        <div className="relative z-20">
+                                            <h1 className="text-xl text-white font-semibold">
+                                                {item.name.toUpperCase()} 
+                                            </h1>
+                                        </div>
+                                        <div className="flex gap-2 mt-2">
                                             <div 
                                                 className="grid place-items-center items-center w-11 h-11 rounded-4xl"
-                                                style={{backgroundColor: getTypeColor(type, "light")}}
+                                                style={{backgroundColor: getTypeColor(item.type_1, "light")}}
                                             >
                                                 <img 
                                                     src={
-                                                        type === "bug" ? BugIcon :
-                                                            type === "dark" ? DarkIcon :
-                                                            type === "dragon" ? DragonIcon :
-                                                            type === "electric" ? ElectricIcon :
-                                                            type === "fairy" ? FairyIcon :
-                                                            type === "fighting" ? FightingIcon :
-                                                            type === "fire" ? FireIcon :
-                                                            type === "flying" ? FlyingIcon :
-                                                            type === "ghost" ? GhostIcon :
-                                                            type === "grass" ? GrassIcon :
-                                                            type === "ground" ? GroundIcon :
-                                                            type === "ice" ? IceIcon :
-                                                            type === "normal" ? NormalIcon :
-                                                            type === "poison" ? PoisonIcon :
-                                                            type === "psychic" ? PsychicIcon :
-                                                            type === "rock" ? RockIcon :
-                                                            type === "steel" ? SteelIcon :
-                                                            type === "water" ? WaterIcon : ""
+                                                        item.type_1 === "bug" ? BugIcon :
+                                                            item.type_1 === "dark" ? DarkIcon :
+                                                            item.type_1 === "dragon" ? DragonIcon :
+                                                            item.type_1 === "electric" ? ElectricIcon :
+                                                            item.type_1 === "fairy" ? FairyIcon :
+                                                            item.type_1 === "fighting" ? FightingIcon :
+                                                            item.type_1 === "fire" ? FireIcon :
+                                                            item.type_1 === "flying" ? FlyingIcon :
+                                                            item.type_1 === "ghost" ? GhostIcon :
+                                                            item.type_1 === "grass" ? GrassIcon :
+                                                            item.type_1 === "ground" ? GroundIcon :
+                                                            item.type_1 === "ice" ? IceIcon :
+                                                            item.type_1 === "normal" ? NormalIcon :
+                                                            item.type_1 === "poison" ? PoisonIcon :
+                                                            item.type_1 === "psychic" ? PsychicIcon :
+                                                            item.type_1 === "rock" ? RockIcon :
+                                                            item.type_1 === "steel" ? SteelIcon :
+                                                            item.type_1 === "water" ? WaterIcon : ""
                                                         } 
-                                                    alt={type}
+                                                    alt={item.type_1}
                                                     className="text-white fill-current" 
                                                 />
                                             </div>
-                                        ))
-                                    }
-                                    </div>      
-                                    <div className="h-36 overflow-hidden absolute right-0 top-0 opacity-8">
-                                        <img 
-                                            src={Pokeball} 
-                                            alt="Pokeball"
-                                            className={`w-[46vw] -rotate-30`}
-                                        />
-                                    </div>
-                                </> 
-                            }
-                        </div>
-                    </div>
-                ))
+                                            {
+                                                item.type_2 ?
+                                                <div 
+                                                    className="grid place-items-center items-center w-11 h-11 rounded-4xl"
+                                                    style={{backgroundColor: getTypeColor(item.type_2, "light")}}
+                                                >
+                                                    <img 
+                                                        src={
+                                                            item.type_2 === "bug" ? BugIcon :
+                                                                item.type_2 === "dark" ? DarkIcon :
+                                                                item.type_2 === "dragon" ? DragonIcon :
+                                                                item.type_2 === "electric" ? ElectricIcon :
+                                                                item.type_2 === "fairy" ? FairyIcon :
+                                                                item.type_2 === "fighting" ? FightingIcon :
+                                                                item.type_2 === "fire" ? FireIcon :
+                                                                item.type_2 === "flying" ? FlyingIcon :
+                                                                item.type_2 === "ghost" ? GhostIcon :
+                                                                item.type_2 === "grass" ? GrassIcon :
+                                                                item.type_2 === "ground" ? GroundIcon :
+                                                                item.type_2 === "ice" ? IceIcon :
+                                                                item.type_2 === "normal" ? NormalIcon :
+                                                                item.type_2 === "poison" ? PoisonIcon :
+                                                                item.type_2 === "psychic" ? PsychicIcon :
+                                                                item.type_2 === "rock" ? RockIcon :
+                                                                item.type_2 === "steel" ? SteelIcon :
+                                                                item.type_2 === "water" ? WaterIcon : ""
+                                                            } 
+                                                        alt={item.type_2}
+                                                        className="text-white fill-current" 
+                                                    />
+                                                </div> : null
+                                            }
+                                        </div>      
+                                        <div className="h-40 overflow-hidden absolute right-0 top-0 opacity-8">
+                                            <img 
+                                                src={Pokeball} 
+                                                alt="Pokeball"
+                                                className={`w-[46vw] -rotate-30`}
+                                            />
+                                        </div>
+                                    </> 
+                                }
+                            </div>
+                        ) :
+                        null
+                    )
+                })
             }
         </div>
     )

@@ -3,6 +3,7 @@ import Pokeball from "@/assets/pokeball.svg"
 
 export default function NavbarLoggedIn() {
 
+    /*
     const items = [
         {
             name: 'Overview',
@@ -20,7 +21,8 @@ export default function NavbarLoggedIn() {
             name: 'My Pokemon List',
             href: '/my-pokemon-list'
         },
-    ]
+    ];
+    */
 
     return (
         <nav className="relative flex justify-between items-start py-[0.8em] h-20 overflow-hidden">
@@ -33,7 +35,7 @@ export default function NavbarLoggedIn() {
 
             </div>
             <div className="lg:hidden z-50">
-                <Sidebar items={ items }/>
+                <Sidebar />
             </div>
             <div className="absolute top-1/2 right-0 -translate-y-1/2 ">
                 <img 
