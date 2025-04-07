@@ -32,7 +32,7 @@ export default function Filter(
     }, [filterBy]);
 
     return (
-        <div className="relative z-50 bg-white">
+        <div className="relative z-50 lg:w-full max-w-[1536px]">
             <div className="flex gap-2">
                 <Input
                     value={filterValue}
@@ -59,7 +59,6 @@ export default function Filter(
                 >
                     <DropdownMenuTrigger>
                         <Button
-                            size={"sm"}
                             onClick={() => setIsOpen(!isOpen)}
                             className="rounded-4xl"
                         >

@@ -105,7 +105,7 @@ export default function PokemonList(
         try {
 
             const response = await fetch(
-                `https://pokeapi.co/api/v2/pokemon/?offset=${passedPokemonCount}&limit=20`
+                `https://pokeapi.co/api/v2/pokemon/?offset=${passedPokemonCount}&limit=24`
             );
 
             const data = await response.json();
@@ -151,137 +151,139 @@ export default function PokemonList(
     }, [passedPokemonCount]);
 
     return (
-        <div className="flex-grow mt-1">
-            {
-                pokemons.map((item: Pokemon) => {
+        <div className="max-w-[1536px] flex-grow mt-1">
+            <div className="grid sm:grid-cols-2 xl:grid-cols-3 sm:gap-x-3">
+                {
+                    pokemons.map((item: Pokemon) => {
 
-                    const key = filterBy?.toLowerCase() as keyof Pokemon;
-                    
-                    return (
-                        filterBy === null ||
-                        (
-                            filterBy !== null &&
+                        const key = filterBy?.toLowerCase() as keyof Pokemon;
+                        
+                        return (
+                            filterBy === null ||
                             (
-                                filterBy == "Type" ? 
-                                item['type_1']?.toLowerCase().includes(filterValue.toLowerCase()) ||
-                                item['type_2']?.toLowerCase().includes(filterValue.toLowerCase()) :
-                                item[key]?.toString().toLowerCase().includes(filterValue.toLowerCase())
-                            )
-                        ) ?
-                        (
-                            <div 
-                                key={item.id}
-                                className={`grid relative h-40 w-full rounded-4xl px-6 py-4 overflow-hidden z-20 mt-5`} 
-                                style={{backgroundColor: getTypeColor(item.type_1, "dark")}}
-                            >
-                                <div className="absolute grid place-items-center -translate-y-6 top-0 z-1">
-                                    <img 
-                                        src={Pattern} 
-                                        alt="Pattern"
-                                        className="w-50 z-10 opacity-14"
-                                    />
-                                </div>
-                                {
-                                    isLoading ?
-                                    <Spinner size={"large"} /> :
-                                    <>
-                                        <div>
-                                            <img 
-                                                src={item.img} 
-                                                alt={item.name}
-                                                className="absolute top-1/2 right-0 -translate-y-1/2 -translate-x-3 w-36 z-30"
-                                            />
-                                        </div>
-                                        <div className="relative z-20 ">
-                                            <h1 className="text-4xl text-white">
-                                                <strong>
-                                                    #{getIdFormatted(item.id)}
-                                                </strong>
-                                            </h1>
-                                        </div>
-                                        <div className="relative z-20">
-                                            <h1 className="text-xl text-white font-semibold">
-                                                {item.name.toUpperCase()} 
-                                            </h1>
-                                        </div>
-                                        <div className="flex gap-2 mt-2">
-                                            <div 
-                                                className="grid place-items-center items-center w-11 h-11 rounded-4xl"
-                                                style={{backgroundColor: getTypeColor(item.type_1, "light")}}
-                                            >
+                                filterBy !== null &&
+                                (
+                                    filterBy == "Type" ? 
+                                    item['type_1']?.toLowerCase().includes(filterValue.toLowerCase()) ||
+                                    item['type_2']?.toLowerCase().includes(filterValue.toLowerCase()) :
+                                    item[key]?.toString().toLowerCase().includes(filterValue.toLowerCase())
+                                )
+                            ) ?
+                            (
+                                <div 
+                                    key={item.id}
+                                    className={`hover:scale-102 grid relative h-40 xs:h-44 sm:h-[170px] lg:h-46 w-full lg:w-119 xl:w-100 2xl:w-126 rounded-4xl px-6 py-4 overflow-hidden z-20 mt-3`} 
+                                    style={{backgroundColor: getTypeColor(item.type_1, "dark")}}
+                                >
+                                    <div className="absolute grid place-items-center -translate-y-6 top-0 xs:top-1/6 z-1">
+                                        <img 
+                                            src={Pattern} 
+                                            alt="Pattern"
+                                            className="w-50 xs:w-60 sm:w-44 lg:w-54 z-10 opacity-14"
+                                        />
+                                    </div>
+                                    {
+                                        isLoading ?
+                                        <Spinner size={"large"} /> :
+                                        <>
+                                            <div>
                                                 <img 
-                                                    src={
-                                                        item.type_1 === "bug" ? BugIcon :
-                                                            item.type_1 === "dark" ? DarkIcon :
-                                                            item.type_1 === "dragon" ? DragonIcon :
-                                                            item.type_1 === "electric" ? ElectricIcon :
-                                                            item.type_1 === "fairy" ? FairyIcon :
-                                                            item.type_1 === "fighting" ? FightingIcon :
-                                                            item.type_1 === "fire" ? FireIcon :
-                                                            item.type_1 === "flying" ? FlyingIcon :
-                                                            item.type_1 === "ghost" ? GhostIcon :
-                                                            item.type_1 === "grass" ? GrassIcon :
-                                                            item.type_1 === "ground" ? GroundIcon :
-                                                            item.type_1 === "ice" ? IceIcon :
-                                                            item.type_1 === "normal" ? NormalIcon :
-                                                            item.type_1 === "poison" ? PoisonIcon :
-                                                            item.type_1 === "psychic" ? PsychicIcon :
-                                                            item.type_1 === "rock" ? RockIcon :
-                                                            item.type_1 === "steel" ? SteelIcon :
-                                                            item.type_1 === "water" ? WaterIcon : ""
-                                                        } 
-                                                    alt={item.type_1}
-                                                    className="text-white fill-current" 
+                                                    src={item.img} 
+                                                    alt={item.name}
+                                                    className="absolute top-1/2 right-0 -translate-y-1/2 -translate-x-3 xs:-translate-x-4 w-36 xs:w-42 sm:w-30 md:w-42 lg:w-44 z-30"
                                                 />
                                             </div>
-                                            {
-                                                item.type_2 ?
+                                            <div className="relative z-20 ">
+                                                <h1 className="text-4xl text-white">
+                                                    <strong>
+                                                        #{getIdFormatted(item.id)}
+                                                    </strong>
+                                                </h1>
+                                            </div>
+                                            <div className="relative z-20">
+                                                <h1 className="text-xl text-white font-semibold">
+                                                    {item.name.toUpperCase()}
+                                                </h1>
+                                            </div>
+                                            <div className="flex gap-2 mt-2 z-30">
                                                 <div 
-                                                    className="grid place-items-center items-center w-11 h-11 rounded-4xl"
-                                                    style={{backgroundColor: getTypeColor(item.type_2, "light")}}
+                                                    className="grid place-items-center items-center w-11 h-11 xs:w-12 xs:h-12 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-4xl"
+                                                    style={{backgroundColor: getTypeColor(item.type_1, "light")}}
                                                 >
                                                     <img 
                                                         src={
-                                                            item.type_2 === "bug" ? BugIcon :
-                                                                item.type_2 === "dark" ? DarkIcon :
-                                                                item.type_2 === "dragon" ? DragonIcon :
-                                                                item.type_2 === "electric" ? ElectricIcon :
-                                                                item.type_2 === "fairy" ? FairyIcon :
-                                                                item.type_2 === "fighting" ? FightingIcon :
-                                                                item.type_2 === "fire" ? FireIcon :
-                                                                item.type_2 === "flying" ? FlyingIcon :
-                                                                item.type_2 === "ghost" ? GhostIcon :
-                                                                item.type_2 === "grass" ? GrassIcon :
-                                                                item.type_2 === "ground" ? GroundIcon :
-                                                                item.type_2 === "ice" ? IceIcon :
-                                                                item.type_2 === "normal" ? NormalIcon :
-                                                                item.type_2 === "poison" ? PoisonIcon :
-                                                                item.type_2 === "psychic" ? PsychicIcon :
-                                                                item.type_2 === "rock" ? RockIcon :
-                                                                item.type_2 === "steel" ? SteelIcon :
-                                                                item.type_2 === "water" ? WaterIcon : ""
+                                                            item.type_1 === "bug" ? BugIcon :
+                                                                item.type_1 === "dark" ? DarkIcon :
+                                                                item.type_1 === "dragon" ? DragonIcon :
+                                                                item.type_1 === "electric" ? ElectricIcon :
+                                                                item.type_1 === "fairy" ? FairyIcon :
+                                                                item.type_1 === "fighting" ? FightingIcon :
+                                                                item.type_1 === "fire" ? FireIcon :
+                                                                item.type_1 === "flying" ? FlyingIcon :
+                                                                item.type_1 === "ghost" ? GhostIcon :
+                                                                item.type_1 === "grass" ? GrassIcon :
+                                                                item.type_1 === "ground" ? GroundIcon :
+                                                                item.type_1 === "ice" ? IceIcon :
+                                                                item.type_1 === "normal" ? NormalIcon :
+                                                                item.type_1 === "poison" ? PoisonIcon :
+                                                                item.type_1 === "psychic" ? PsychicIcon :
+                                                                item.type_1 === "rock" ? RockIcon :
+                                                                item.type_1 === "steel" ? SteelIcon :
+                                                                item.type_1 === "water" ? WaterIcon : ""
                                                             } 
-                                                        alt={item.type_2}
-                                                        className="text-white fill-current" 
+                                                        alt={item.type_1}
+                                                        className="xs:w-7 lg:w-8 h-auto text-white fill-current" 
                                                     />
-                                                </div> : null
-                                            }
-                                        </div>      
-                                        <div className="h-40 overflow-hidden absolute right-0 top-0 opacity-8">
-                                            <img 
-                                                src={Pokeball} 
-                                                alt="Pokeball"
-                                                className={`w-[46vw] -rotate-30`}
-                                            />
-                                        </div>
-                                    </> 
-                                }
-                            </div>
-                        ) :
-                        null
-                    )
-                })
-            }
+                                                </div>
+                                                {
+                                                    item.type_2 ?
+                                                    <div 
+                                                        className="grid place-items-center items-center w-11 h-11 xs:w-12 xs:h-12 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-4xl"
+                                                        style={{backgroundColor: getTypeColor(item.type_2, "light")}}
+                                                    >
+                                                        <img 
+                                                            src={
+                                                                item.type_2 === "bug" ? BugIcon :
+                                                                    item.type_2 === "dark" ? DarkIcon :
+                                                                    item.type_2 === "dragon" ? DragonIcon :
+                                                                    item.type_2 === "electric" ? ElectricIcon :
+                                                                    item.type_2 === "fairy" ? FairyIcon :
+                                                                    item.type_2 === "fighting" ? FightingIcon :
+                                                                    item.type_2 === "fire" ? FireIcon :
+                                                                    item.type_2 === "flying" ? FlyingIcon :
+                                                                    item.type_2 === "ghost" ? GhostIcon :
+                                                                    item.type_2 === "grass" ? GrassIcon :
+                                                                    item.type_2 === "ground" ? GroundIcon :
+                                                                    item.type_2 === "ice" ? IceIcon :
+                                                                    item.type_2 === "normal" ? NormalIcon :
+                                                                    item.type_2 === "poison" ? PoisonIcon :
+                                                                    item.type_2 === "psychic" ? PsychicIcon :
+                                                                    item.type_2 === "rock" ? RockIcon :
+                                                                    item.type_2 === "steel" ? SteelIcon :
+                                                                    item.type_2 === "water" ? WaterIcon : ""
+                                                                } 
+                                                            alt={item.type_2}
+                                                            className="xs:w-7 lg:w-8 h-auto text-white fill-current" 
+                                                        />
+                                                    </div> : null
+                                                }
+                                            </div>      
+                                            <div className="h-40 xs:h-46 lg:h-46 overflow-hidden absolute right-0 top-0 -translate-y-6 xs:top-0 md:top-1/12 lg:top-0  opacity-8">
+                                                <img 
+                                                    src={Pokeball} 
+                                                    alt="Pokeball"
+                                                    className={`w-44 xs:w-56 sm:w-40 md:w-50 lg:w-52 -rotate-30`}
+                                                />
+                                            </div>
+                                        </> 
+                                    }
+                                </div>
+                            ) :
+                            null
+                        )
+                    })
+                }
+            </div>
         </div>
     )
 }

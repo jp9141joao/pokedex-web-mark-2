@@ -7,11 +7,11 @@ export default function Navigation(
 ) {
 
     return (
-      <div className="flex w-full justify-between mt-5 mb-2">
+      <div className="lg:w-full max-w-[1536px] flex w-full justify-between mt-5 mb-2">
         <div
           onClick={() => {
             setIsLoading(true);
-            canNavigate.previous ? setPassedPokemonCount(passedPokemonCount - 20) : null;
+            canNavigate.previous ? setPassedPokemonCount(passedPokemonCount - 24) : null;
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
           className={`flex cursor-pointer ${!canNavigate.previous ? "opacity-50" : null}`}
@@ -23,13 +23,13 @@ export default function Navigation(
         </div>
         <div>
           <p className="font-semibold">
-            Page { passedPokemonCount / 20 }
+            Page { (passedPokemonCount / 24) + 1 }
           </p>
         </div>
         <div
           onClick={() => {
             setIsLoading(true);
-            canNavigate.next ? setPassedPokemonCount(passedPokemonCount + 20) : null;
+            canNavigate.next ? setPassedPokemonCount(passedPokemonCount + 24) : null;
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
           className={`flex cursor-pointer ${!canNavigate.next ? "opacity-50" : null}`}

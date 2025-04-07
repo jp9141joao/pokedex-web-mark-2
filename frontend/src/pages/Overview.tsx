@@ -16,13 +16,13 @@ export default function Overview() {
 
     useEffect(() => {
         if (passedPokemonCount) {
-            localStorage.setItem('passedPokemonCount', passedPokemonCount.toString());
+            sessionStorage.setItem('passedPokemonCount', passedPokemonCount.toString());
         }
 
     }, [passedPokemonCount]);
 
     useEffect(() => {
-        const value = localStorage.getItem('passedPokemonCount');
+        const value = sessionStorage.getItem('passedPokemonCount');
 
         if (value) {
             setPassedPokemonCount(Number(value));
@@ -33,23 +33,23 @@ export default function Overview() {
     }, []);
 
     return (
-        <div className="flex flex-col min-h-screen px-[1.3em] sm:px-[1.8em]">
-                <NavbarLoggedIn />
-                <Filter
-                    filterValue={filterValue} 
-                    setFilterValue={setFilterValue} 
-                    filterBy={filterBy}
-                    setFilterBy={setFilterBy}
-                />
-                <PokemonList
-                    filterValue={filterValue} 
-                    filterBy={filterBy}
-                    passedPokemonCount={passedPokemonCount || 0} 
-                    isLoading={isLoading} 
-                    setIsLoading={setIsLoading} 
-                    setCanNavigate={setCanNavigate}
-                />
-                <Navigation canNavigate={canNavigate} passedPokemonCount={passedPokemonCount || 0} setIsLoading={setIsLoading} setPassedPokemonCount={setPassedPokemonCount}/>
+        <div className="w-full flex flex-col lg:items-center min-h-screen px-[1.3em] sm:px-[1.8em]" style={{border: '1px solid red'}}>
+            <NavbarLoggedIn />
+            <Filter
+                filterValue={filterValue} 
+                setFilterValue={setFilterValue} 
+                filterBy={filterBy}
+                setFilterBy={setFilterBy}
+            />
+            <PokemonList
+                filterValue={filterValue} 
+                filterBy={filterBy}
+                passedPokemonCount={passedPokemonCount || 0} 
+                isLoading={isLoading} 
+                setIsLoading={setIsLoading} 
+                setCanNavigate={setCanNavigate}
+            />
+            <Navigation canNavigate={canNavigate} passedPokemonCount={passedPokemonCount || 0} setIsLoading={setIsLoading} setPassedPokemonCount={setPassedPokemonCount}/>
         </div>
     );
 }
