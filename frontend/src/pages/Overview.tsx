@@ -33,7 +33,7 @@ export default function Overview() {
     }, []);
 
     return (
-        <div className="w-full flex flex-col lg:items-center min-h-screen px-[1.3em] sm:px-[1.8em]" style={{border: '1px solid red'}}>
+        <div className="w-full flex flex-col lg:items-center min-h-screen px-[1.3em] sm:px-[1.8em]">
             <NavbarLoggedIn />
             <Filter
                 filterValue={filterValue} 

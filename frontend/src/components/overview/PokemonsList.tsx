@@ -152,7 +152,7 @@ export default function PokemonList(
 
     return (
         <div className="max-w-[1536px] flex-grow mt-1">
-            <div className="grid sm:grid-cols-2 xl:grid-cols-3 sm:gap-x-3">
+            <div className="grid sm:grid-cols-2 xl:grid-cols-2 sm:gap-x-3">
                 {
                     pokemons.map((item: Pokemon) => {
 
@@ -172,10 +172,10 @@ export default function PokemonList(
                             (
                                 <div 
                                     key={item.id}
-                                    className={`hover:scale-102 grid relative h-40 xs:h-44 sm:h-[170px] lg:h-46 w-full lg:w-119 xl:w-100 2xl:w-126 rounded-4xl px-6 py-4 overflow-hidden z-20 mt-3`} 
+                                    className={`hover:scale-102 grid relative h-40 xs:h-44 sm:h-[170px] lg:h-46 w-full lg:w-119 xl:w-100 2xl:w-120 rounded-4xl px-6 py-4 overflow-hidden z-20 mt-3`} 
                                     style={{backgroundColor: getTypeColor(item.type_1, "dark")}}
                                 >
-                                    <div className="absolute grid place-items-center -translate-y-6 top-0 xs:top-1/6 z-1">
+                                    <div className="absolute grid place-items -center -translate-y-6 top-0 xs:top-1/6 z-1">
                                         <img 
                                             src={Pattern} 
                                             alt="Pattern"
@@ -268,7 +268,7 @@ export default function PokemonList(
                                                     </div> : null
                                                 }
                                             </div>      
-                                            <div className="h-40 xs:h-46 lg:h-46 overflow-hidden absolute right-0 top-0 -translate-y-6 xs:top-0 md:top-1/12 lg:top-0  opacity-8">
+                                            <div className="h-40 xs:h-46 lg:h-46 overflow-hidden absolute right-0 top-1/2 -translate-y-1/2   opacity-8">
                                                 <img 
                                                     src={Pokeball} 
                                                     alt="Pokeball"

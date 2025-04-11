@@ -32,7 +32,7 @@ export default function Filter(
     }, [filterBy]);
 
     return (
-        <div className="relative z-50 lg:w-full max-w-[1536px]">
+        <div className="relative z-50 lg:w-full max-w-[1036px]">
             <div className="flex gap-2">
                 <Input
                     value={filterValue}
