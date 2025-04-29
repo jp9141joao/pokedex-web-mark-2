@@ -1,5 +1,5 @@
-import { Sidebar } from "../Sidebar";
 import Pokeball from "@/assets/pokeball.svg"
+import { LuLogOut } from "react-icons/lu";
 
 export default function NavbarLoggedIn() {
 
@@ -28,14 +28,11 @@ export default function NavbarLoggedIn() {
         <nav className="lg:w-full max-w-[1536px] relative flex justify-between items-start py-[0.8em] h-20 overflow-hidden">
             <div>
                 <h1 className="text-xl xxs:text-2xl font-semibold">
-                    Hello, User! 👋
+                    Hello, Trainer! 👋
                 </h1>
             </div>
-            <div className="hidden lg:inline-block">
-
-            </div>
-            <div className="lg:hidden z-50">
-                <Sidebar />
+            <div className="z-50 mt-0.5">
+                <LuLogOut className="size-6"/>
             </div>
             <div className="absolute top-1/2 right-0 -translate-y-1/2 ">
                 <img 

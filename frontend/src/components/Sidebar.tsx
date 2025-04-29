@@ -8,11 +8,13 @@ import {
 import { HiMenuAlt1, HiMenuAlt3 } from "react-icons/hi";
 //import { Link, useLocation } from 'react-router-dom';
 import { Button } from "./ui/button";
+import { useNavigate } from "react-router-dom";
 
 export const Sidebar = (/*{ items }: { items: { name: string, href: string }[] }*/) => {
     
     //const { pathname } = useLocation();
     const [ showSheet, setShowSheet ] = useState<boolean>(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         function handleResize() {
@@ -79,8 +81,11 @@ export const Sidebar = (/*{ items }: { items: { name: string, href: string }[] }
                     */}
                     <div>
                     <div className="w-full mt-2">
-                        <Button className="w-full">
-                            Log out
+                        <Button 
+                            onClick={() => navigate('/home')}
+                            className="w-full"
+                        >
+                            Go back
                         </Button>
                     </div>
                 </div>

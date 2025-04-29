@@ -151,7 +151,7 @@ export default function PokemonList(
     }, [passedPokemonCount]);
 
     return (
-        <div className="max-w-[1536px] flex-grow mt-1">
+        <div className="hidden max-w-[1536px] flex-grow mt-1">
             <div className="grid sm:grid-cols-2 xl:grid-cols-2 sm:gap-x-3">
                 {
                     pokemons.map((item: Pokemon) => {

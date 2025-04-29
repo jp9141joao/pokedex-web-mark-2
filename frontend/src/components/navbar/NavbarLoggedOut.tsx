@@ -1,21 +1,13 @@
-import { useEffect, useState, useRef, useCallback, useLayoutEffect } from "react";
+import { useRef, useCallback, useLayoutEffect } from "react";
 import { useScroll } from "../home/ScrollContext";
 import { Button } from "../ui/button";
-import LoginSection from "../home/LoginSection";
+import { useNavigate } from "react-router-dom";
 
 export default function NavbarLoggedOut() {
   const { scroll, setScroll } = useScroll();
-  const [showDialog, setShowDialog] = useState<boolean>(false);
   const navRef = useRef<HTMLElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-
-    const token = localStorage.getItem("authToken");
-
-    if (token) localStorage.removeItem("authToken");
-
-  }, []);
+  const navigate = useNavigate();
 
   const updateTranslate = useCallback(() => {
 
@@ -47,7 +39,7 @@ export default function NavbarLoggedOut() {
   }, [updateTranslate]);
 
   const handleButtonClick = () => {
-    scroll === "Right" ? setScroll("Left") : setShowDialog(true);
+    scroll === "Right" ? setScroll("Left") : navigate('/overview');
   };
 
   return (
@@ -98,9 +90,8 @@ export default function NavbarLoggedOut() {
           className="mx-[1.3em] sm:mx-[1.8em] text-sm xxs:text-base xs:text-sm sm:text-base lg:text-lg font-semibold transition-transform duration-200 rounded-4xl"
           style={{ color: "white" }}
         >
-          {scroll === "Right" ? "Go back" : "Log In"}
+          {scroll === "Right" ? "Go back" : "Enter"}
         </Button>
-        <LoginSection showDialog={showDialog} setShowDialog={setShowDialog} />
       </div>
     </nav>
   );
