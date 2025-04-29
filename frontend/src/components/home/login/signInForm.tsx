@@ -4,6 +4,8 @@ import { Separator } from "@/components/ui/separator";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Authentication } from "@/service/api";
 
 export default function SignInForm(
     { setFormType, setFullName, email, setEmail, password, setPassword }: 
@@ -15,7 +17,56 @@ export default function SignInForm(
     }
 ) {
 
+    const [ alert, setAlert ] = useState<{ local: string, message: string}>({ local: '', message: '' });
+    const [ showAlert, setShowAlert ] = useState<boolean>(false);
     const navigate = useNavigate();
+
+    const handleAuth = async () => {
+        
+        if (email == '') {
+            setAlert({
+                local: 'E-mail',
+                message: 'E-mail was not provided'
+            });
+
+            return;
+        }
+
+        if (password = '') {
+            setAlert({
+                local: 'Password',
+                message: 'Password was not provided'
+            });
+
+            return;
+        }
+
+        try {
+            const response = await Authentication({ email, password, operationType: 'SignIn' });
+
+            if (response.success) {
+                localStorage.setItem('authToken', response.data);
+                navigate('/overview');
+            } else {
+                
+                if (response.data == 'Incorrect E-mail or Password.') {
+                    setAlert({
+                        local: response.error.local,
+                        message: response.error.message
+                    });
+                    setShowAlert(true);
+                }
+            }
+        } catch (error: any) {
+            console.error(error);
+            setAlert({
+                local: 'None',
+                message: 'An unexpected error occurred during sign in'
+            });
+            setShowAlert(true);
+        }
+
+    }
 
     return (
         <div className="grid gap-5">
@@ -28,6 +79,11 @@ export default function SignInForm(
                         id="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        onClick={() => {
+                            if (showAlert) {
+                                setShowAlert(false);
+                            }
+                        }}
                         placeholder="name@example.com"
                         className="mt-1.5"                    
                     />
@@ -40,12 +96,19 @@ export default function SignInForm(
                         id="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        onClick={() => {
+                            if (showAlert) {
+                                setShowAlert(false);
+                            }
+                        }}
                         placeholder="Abc1234#"
                         className="mt-1.5"
                     />
                 </div>
                 
                 <div>
+                    {
+                    /*
                     <p>
                         Forgot your password ? <strong
                                                     onClick={() => setFormType("ForgotPassword")}
@@ -53,14 +116,18 @@ export default function SignInForm(
                                                     Click here!
                                                 </strong>
                     </p>
+                    */
+                    }
                     <Button 
-                        className="w-full text-sm xxs:text-base rounded-4xl mt-3"
-                        onClick={() => navigate("/overview")}
+                        className="w-full text-sm xxs:text-base rounded-4xl mt-1"
+                        onClick={handleAuth}
                     >
                         Access Account
                     </Button>
                 </div>
             </div>
+            {
+            /*
             <div className="flex justify-center items-center gap-3">
                 <Separator className="bg-black max-w-[20vw] sm:max-w-[15vw] lg:max-w-[9vw] xl:max-w-[100px]" />
                 <p className="text-sm xxs:text-base">
@@ -84,6 +151,8 @@ export default function SignInForm(
                     </p>
                 </Button>
             </div>
+            */
+            }
             <div>
                 <p className="text-sm xxs:text-base text-center">
                     Don't have an account ? <span

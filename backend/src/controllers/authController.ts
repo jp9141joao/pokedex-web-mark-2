@@ -15,20 +15,24 @@ if (!SECRET_KEY) {
 
 export const authentication = async (req: Request, res: Response): Promise<void> => {
     const { fullName, email, password, operationType } = req.body as AuthData;
+
+    if (!operationType) {
+        res.status(400).json(HttpResult.Fail("None", "Operation Type was not provided."));
+    }
     
     if (!email) {
-        res.status(400).json(HttpResult.Fail("E-mail was not provided."));
+        res.status(400).json(HttpResult.Fail("E-mail", "E-mail was not provided."));
         return;
     } else if (!Utils.IsValidEmail(email)) {
-        res.status(400).json(HttpResult.Fail("E-mail is invalid or not formatted correctly."));
+        res.status(400).json(HttpResult.Fail("E-mail", "E-mail is invalid or not formatted correctly."));
         return;
     };
 
     if (!password) {
-        res.status(400).json(HttpResult.Fail("Password was not provided."));
+        res.status(400).json(HttpResult.Fail("Password", "Password was not provided."));
         return;
     } else if (!Utils.IsValidPassword(password)) {
-        res.status(400).json(HttpResult.Fail("Password is invalid or not formatted correctly."));
+        res.status(400).json(HttpResult.Fail("Password", "Password is invalid or not formatted correctly."));
         return;
     };
 
@@ -41,14 +45,14 @@ export const authentication = async (req: Request, res: Response): Promise<void>
             });
         
             if (!userData) {
-                res.status(400).json(HttpResult.Fail("Incorrect E-mail or Password."));
+                res.status(400).json(HttpResult.Fail("Both", "Incorrect E-mail or Password."));
                 return;
             }
         
             const passwordValidation = await bcrypt.compare(password, userData.password);
         
             if (!passwordValidation) {
-                res.status(400).json(HttpResult.Fail("Incorrect E-mail or Password"));
+                res.status(400).json(HttpResult.Fail("Both", "Incorrect E-mail or Password"));
                 return;
             }
         
@@ -63,15 +67,15 @@ export const authentication = async (req: Request, res: Response): Promise<void>
             res.status(200).json(HttpResult.Success(token));
         } catch (error: any) {
             console.error(error);
-            res.status(500).json(HttpResult.Fail("An unexpected error occurred during authentication."));
+            res.status(500).json(HttpResult.Fail("None", "An unexpected error occurred during authentication."));
         }
     } else {
 
         if (!fullName) {
-            res.status(400).json(HttpResult.Fail("Full Name was not provided."));
+            res.status(400).json(HttpResult.Fail("Full Name", "Full Name was not provided."));
             return;
         } else if (!Utils.IsValidFullName(fullName)) {
-            res.status(400).json(HttpResult.Fail("Full Name is invalid or not formatted correctly."));
+            res.status(400).json(HttpResult.Fail("Full Name", "Full Name is invalid or not formatted correctly."));
             return;
         };
 
@@ -82,7 +86,7 @@ export const authentication = async (req: Request, res: Response): Promise<void>
         }) > 0 ? true : false;
     
         if (doesUserExist) {
-            res.status(400).json(HttpResult.Fail("There is already a user with this E-mail."));
+            res.status(400).json(HttpResult.Fail("E-mail", "ready a user with this E-mail."));
             return;
         }
 
@@ -100,7 +104,7 @@ export const authentication = async (req: Request, res: Response): Promise<void>
             res.status(200).json(HttpResult.Success("Account Created Successfully"));
         } catch (error: any) {
             console.error(error);
-            res.status(500).json(HttpResult.Fail("An unexpected error occurred during account creation"));
+            res.status(500).json(HttpResult.Fail("None", "An unexpected error occurred during account creation"));
         }
     };
 }
@@ -113,7 +117,7 @@ export const updateInfo = async (req: Request, res: Response): Promise<void> => 
     if (operationType == "Profile") {
         
         if (!token) {
-            res.status(401).json(HttpResult.Fail("Token was not provided."));
+            res.status(401).json(HttpResult.Fail("None", "Token was not provided."));
             return;
         }
 
@@ -121,12 +125,12 @@ export const updateInfo = async (req: Request, res: Response): Promise<void> => 
         const userId = decoded.userId;
 
         if (fullName && !Utils.IsValidFullName(fullName)) {
-            res.status(400).json(HttpResult.Fail("Full Name is invalid or not formatted correctly."));
+            res.status(400).json(HttpResult.Fail("Full Name", "Full Name is invalid or not formatted correctly."));
             return;
         };
     
         if (email && !Utils.IsValidEmail(email)) {
-            res.status(400).json(HttpResult.Fail("E-mail is invalid or not formatted correctly."));
+            res.status(400).json(HttpResult.Fail("E-mail", "E-mail is invalid or not formatted correctly."));
             return;
         };
 
@@ -137,7 +141,7 @@ export const updateInfo = async (req: Request, res: Response): Promise<void> => 
         }) > 0 ? true : false;
 
         if (doesEmailExist) {
-            res.status(400).json(HttpResult.Fail("There is already a user with this E-mail."));
+            res.status(400).json(HttpResult.Fail("E-mail", "There is already a user with this E-mail."));
             return;
         }
 
@@ -156,18 +160,18 @@ export const updateInfo = async (req: Request, res: Response): Promise<void> => 
     } else {
 
         if (!email) {
-            res.status(400).json(HttpResult.Fail("E-mail was not provided."));
+            res.status(400).json(HttpResult.Fail("E-mail", "E-mail was not provided."));
             return;
         } else if (!Utils.IsValidEmail(email)) {
-            res.status(400).json(HttpResult.Fail("E-mail is invalid or not formatted correctly."));
+            res.status(400).json(HttpResult.Fail("E-mail", "E-mail is invalid or not formatted correctly."));
             return;
         };
 
         if (!password) {
-            res.status(400).json(HttpResult.Fail("Password was not provided."));
+            res.status(400).json(HttpResult.Fail("Password", "Password was not provided."));
             return;
         } else if (!Utils.IsValidPassword(password)) {
-            res.status(400).json(HttpResult.Fail("Password is invalid or not formatted correctly."));
+            res.status(400).json(HttpResult.Fail("Password", "Password is invalid or not formatted correctly."));
             return;
         };
 
@@ -178,25 +182,25 @@ export const updateInfo = async (req: Request, res: Response): Promise<void> => 
         });
     
         if (!userData) {
-            res.status(400).json(HttpResult.Fail("Incorrect E-mail or Password."));
+            res.status(400).json(HttpResult.Fail("Both", "Incorrect E-mail or Password."));
             return;
         }
     
         const passwordValidation = await bcrypt.compare(password, userData.password);
     
         if (!passwordValidation) {
-            res.status(400).json(HttpResult.Fail("Incorrect E-mail or Password"));
+            res.status(400).json(HttpResult.Fail("Both", "Incorrect E-mail or Password"));
             return;
         }
 
         if (!newPassword) {
-            res.status(400).json(HttpResult.Fail("New Password was not provided."));
+            res.status(400).json(HttpResult.Fail("New Password", "New Password was not provided."));
             return;
         } else if (password == newPassword) {
-            res.status(400).json(HttpResult.Fail("New password is equal to the old one."));
+            res.status(400).json(HttpResult.Fail("New Password", "New password is equal to the old one."));
             return;
         } else if (!Utils.IsValidPassword(newPassword)) {
-            res.status(400).json(HttpResult.Fail("New Password is invalid or not formatted correctly."));
+            res.status(400).json(HttpResult.Fail("New Password", "New Password is invalid or not formatted correctly."));
             return;
         };
 
