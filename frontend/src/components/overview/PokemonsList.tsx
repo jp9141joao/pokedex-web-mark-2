@@ -151,7 +151,7 @@ export default function PokemonList(
     }, [passedPokemonCount]);
 
     return (
-        <div className="hidden max-w-[1536px] flex-grow mt-1">
+        <div className="max-w-[1036px] flex-grow mt-1">
             <div className="grid sm:grid-cols-2 xl:grid-cols-2 sm:gap-x-3">
                 {
                     pokemons.map((item: Pokemon) => {
@@ -172,12 +172,12 @@ export default function PokemonList(
                             (
                                 <div 
                                     key={item.id}
-                                    className={`hover:scale-102 grid relative h-40 xs:h-44 sm:h-[170px] lg:h-46 w-full lg:w-119 xl:w-100 2xl:w-120 rounded-4xl px-6 py-4 overflow-hidden z-20 mt-3`} 
+                                    className={`max-w-[512px] hover:scale-102 grid relative h-40 xs:h-44 sm:h-[170px] lg:h-46 w-full lg:w-[46.5vw] rounded-4xl px-6 py-4 overflow-hidden z-20 mt-3`} 
                                     style={{backgroundColor: getTypeColor(item.type_1, "dark")}}
                                 >
                                     <div className="absolute grid place-items -center -translate-y-6 top-0 xs:top-1/6 z-1">
                                         <img 
-                                            src={Pattern} 
+                                            src={"Pattern"} 
                                             alt="Pattern"
                                             className="w-50 xs:w-60 sm:w-44 lg:w-54 z-10 opacity-14"
                                         />
@@ -188,7 +188,7 @@ export default function PokemonList(
                                         <>
                                             <div>
                                                 <img 
-                                                    src={item.img} 
+                                                    src={"item.img"} 
                                                     alt={item.name}
                                                     className="absolute top-1/2 right-0 -translate-y-1/2 -translate-x-3 xs:-translate-x-4 w-36 xs:w-42 sm:w-30 md:w-42 lg:w-44 z-30"
                                                 />
@@ -270,7 +270,7 @@ export default function PokemonList(
                                             </div>      
                                             <div className="h-40 xs:h-46 lg:h-46 overflow-hidden absolute right-0 top-1/2 -translate-y-1/2   opacity-8">
                                                 <img 
-                                                    src={Pokeball} 
+                                                    src={"Pokeball"} 
                                                     alt="Pokeball"
                                                     className={`w-44 xs:w-56 sm:w-40 md:w-50 lg:w-52 -rotate-30`}
                                                 />

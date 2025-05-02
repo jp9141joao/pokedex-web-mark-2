@@ -1,7 +1,10 @@
 import Pokeball from "@/assets/pokeball.svg"
 import { LuLogOut } from "react-icons/lu";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export default function NavbarLoggedIn() {
+
+    const navigate = useNavigate();
 
     /*
     const items = [
@@ -31,7 +34,10 @@ export default function NavbarLoggedIn() {
                     Hello, Trainer! 👋
                 </h1>
             </div>
-            <div className="z-50 mt-0.5">
+            <div 
+                className="z-50 mt-0.5 cursor-pointer"
+                onClick={() => navigate('/home')}
+            >
                 <LuLogOut className="size-6"/>
             </div>
             <div className="absolute top-1/2 right-0 -translate-y-1/2 ">
