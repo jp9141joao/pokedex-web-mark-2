@@ -4,28 +4,103 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Define CSS custom properties for theming */
 @theme {
+  /* Small font size base (set to 0px, likely overridden or placeholder) */
   --font-size-sm: 0px;
+  /* Extra extra small breakpoint at 390px */
   --breakpoint-xxs: 390px;
+  /* Extra small breakpoint at 450px */
   --breakpoint-xs: 450px;
-  --color-white:#f4f4f4;
+  /* Light grayish-white color */
+  --color-white: #f4f4f4;
 }
 
+/* 
+  Responsive title class:
+  Uses Tailwind’s @apply to adjust font size and line height
+  based on viewport width breakpoints.
+*/
 .title-responsive {
-  @apply text-[8.5vw] xxs:text-[8vw] xs:text-[5vw] sm:text-[4.65vw] md:text-[4.75vw] lg:text-[3.6vw] xl:text-[3.8vw] 2xl:text-5xl font-semibold leading-9 xxs:leading-10 xs:leading-tight
+  @apply 
+    /* Base font size: 8.5vw (viewport width) */
+    text-[8.5vw] 
+    /* At xxs (>= 390px): 8vw */
+    xxs:text-[8vw] 
+    /* At xs (>= 450px): 5vw */
+    xs:text-[5vw] 
+    /* At sm (>= 640px): 4.65vw */
+    sm:text-[4.65vw] 
+    /* At md (>= 768px): 4.75vw */
+    md:text-[4.75vw] 
+    /* At lg (>= 1024px): 3.6vw */
+    lg:text-[3.6vw] 
+    /* At xl (>= 1280px): 3.8vw */
+    xl:text-[3.8vw] 
+    /* At 2xl (>= 1536px): static size 5xl */
+    2xl:text-5xl 
+    /* Semi-bold font weight */
+    font-semibold 
+    /* Base line height: 2.25rem (leading-9) */
+    leading-9 
+    /* At xxs: line height 2.5rem (leading-10) */
+    xxs:leading-10 
+    /* At xs: tighter line height (leading-tight) */
+    xs:leading-tight;
 }
 
+/* 
+  Responsive paragraph class:
+  Adjusts paragraph font size at various viewport widths.
+*/
 .para-responsive {
-  @apply text-[4.65vw] xxs:text-[4.5vw] xs:text-[3.25vw] sm:text-[3.1vw] lg:text-[2vw] xl:text-[1.9vw] 2xl:text-2xl
+  @apply 
+    /* Base font size: 4.65vw */
+    text-[4.65vw] 
+    /* At xxs: 4.5vw */
+    xxs:text-[4.5vw] 
+    /* At xs: 3.25vw */
+    xs:text-[3.25vw] 
+    /* At sm: 3.1vw */
+    sm:text-[3.1vw] 
+    /* At lg: 2vw */
+    lg:text-[2vw] 
+    /* At xl: 1.9vw */
+    xl:text-[1.9vw] 
+    /* At 2xl: static size 2xl */
+    2xl:text-2xl;
 }
 
+/* 
+  Responsive text for buttons:
+  Adjusts the font size of button text at different breakpoints.
+*/
 .text-button-responsive {
-  @apply text-sm xxs:text-base xs:text-sm sm:text-lg lg:text-lg 2xl:text-xl font-semibold
+  @apply 
+    /* Base static size small */
+    text-sm 
+    /* At xxs: base text */
+    xxs:text-base 
+    /* At xs: small text */
+    xs:text-sm 
+    /* At sm: large text */
+    sm:text-lg 
+    /* At lg: large text */
+    lg:text-lg 
+    /* At 2xl: extra-large text */
+    2xl:text-xl 
+    /* Semi-bold font weight */
+    font-semibold;
 }
 
+/* 
+  Responsive icon sizing:
+  Applies a fixed size utility (e.g., width and height 1.5rem if “size-6”).
+*/
 .icon-responsive {
-  @apply size-6
+  @apply size-6;
 }
+
 
 :root {
   --background: oklch(1 0 0);

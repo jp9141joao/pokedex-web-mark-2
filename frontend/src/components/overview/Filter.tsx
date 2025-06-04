@@ -1,3 +1,4 @@
+// Importing reusable UI components
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import {
@@ -5,16 +6,20 @@ import {
     DropdownMenuContent,
     DropdownMenuLabel,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
+
 import { useEffect, useState } from "react";
+
+// Importing icons for the filter UI
 import { MdOutlineMoreHoriz, MdOutlineCheck, MdKeyboardArrowDown } from "react-icons/md";
-  
+
+// Functional component Filter with props for managing filter state
 export default function Filter(
     {
-        filterValue, 
-        setFilterValue, 
-        filterBy, 
-        setFilterBy
+        filterValue,           // current value to filter
+        setFilterValue,       // function to update filterValue
+        filterBy,             // current selected filter criterion
+        setFilterBy           // function to update filterBy
     }: {
         filterValue: string,
         setFilterValue: (value: string) => void,
@@ -22,9 +27,13 @@ export default function Filter(
         setFilterBy: (value: string | null) => void
     }
 ) {
+    // Local state to manage whether the dropdown menu is open
     const [ isOpen, setIsOpen ] = useState<boolean>(false);
-    const filters: string[] = ['ID', 'Name', 'Type', 'Height', 'Weight' /* , 'HP', 'ATK', 'DEF', 'SP. ATK', 'SP. DEF', 'SPD' */];
 
+    // Array of available filter options
+    const filters: string[] = ['ID', 'Name', 'Type', 'Height', 'Weight'];
+
+    // Effect that resets the filter value when no filter is selected
     useEffect(() => {
         if (filterBy === null) {
             setFilterValue('');
@@ -34,21 +43,26 @@ export default function Filter(
     return (
         <div className="relative z-50 lg:w-full max-w-[1036px]">
             <div className="flex gap-2">
+                {/* Input for typing the filter value */}
                 <Input
                     value={filterValue}
                     onChange={(e) => {
+                        // Only allow typing if a filter is selected
                         if (filterBy !== null) {
                             setFilterValue(e.target.value);
                         }
                     }}
                     onClick={() => {
+                        // Open the dropdown to select a filter if none is selected
                         if (filterBy === null) {
                             setIsOpen(true);
                         }
                     }}
                     placeholder={filterBy === null ? "Select a filter" : `Search for Pokemon`}
                     className="bg-transparent border-1"
-                />  
+                />
+
+                {/* Dropdown menu for selecting filter criterion */}
                 <DropdownMenu
                     open={isOpen}
                     onOpenChange={(open) => {
@@ -58,39 +72,47 @@ export default function Filter(
                     }}
                 >
                     <DropdownMenuTrigger>
+                        {/* Button that toggles the dropdown */}
                         <Button
                             onClick={() => setIsOpen(!isOpen)}
                             className="rounded-4xl"
                         >
                             { 
                                 filterBy === null ? 
-                                <MdOutlineMoreHoriz className="size-5"/> : 
-                                <div className="flex items-center gap-1">
-                                    <p>
-                                        { filterBy }
-                                    </p>
-                                    <MdKeyboardArrowDown className="size-5"/>
-                                </div>
+                                    // If no filter is selected, show more icon
+                                    <MdOutlineMoreHoriz className="size-5"/> : 
+                                    // If filter is selected, show filter name with down arrow
+                                    <div className="flex items-center gap-1">
+                                        <p>{ filterBy }</p>
+                                        <MdKeyboardArrowDown className="size-5"/>
+                                    </div>
                             }
                         </Button>
                     </DropdownMenuTrigger>
+
+                    {/* Dropdown content listing all filter options */}
                     <DropdownMenuContent align="end">
                         {
                             filters.map((item: string) => (
                                 <DropdownMenuLabel 
                                     key={item}
                                     onClick={() => {
+                                        // If different filter selected, set it
                                         if (filterBy !== item) {
                                             setFilterBy(item);
-                                        } else if (filterBy === item) {
+                                        } 
+                                        // If same filter clicked again, unset it
+                                        else if (filterBy === item) {
                                             setFilterBy(null);
                                         }
-
+                                        // Close dropdown after selection
                                         setIsOpen(false);
                                     }}
                                     className="flex items-center gap-1"
                                 >
-                                    { item } { filterBy === item ? <MdOutlineCheck className="size-5"/> : null }
+                                    {/* Display filter name and a check icon if it is selected */}
+                                    { item } 
+                                    { filterBy === item ? <MdOutlineCheck className="size-5"/> : null }
                                 </DropdownMenuLabel>
                             ))
                         }
